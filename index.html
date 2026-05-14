@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hussein Mlhem — Senior Multimedia Designer & AI Visual Content Creator</title>
+  <meta name="description" content="Portfolio of Hussein Mlhem, Abu Dhabi based Senior Multimedia Designer, Video Editor, AI Visual Content Creator, Digital Marketing and Automation specialist." />
+  <meta name="theme-color" content="#3DBE72" />
+  <meta property="og:title" content="Hussein Mlhem — Multimedia Designer Portfolio" />
+  <meta property="og:description" content="Motion graphics, AI video, event content, web, e-commerce, social design, logo animation, and n8n automation workflows." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/hussein-mlhem-profile.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green:#3DBE72;
+      --green-soft:rgba(61,190,114,.12);
+      --green-line:rgba(61,190,114,.22);
+      --bg:#020403;
+      --bg2:#060908;
+      --surface:#0a100d;
+      --surface2:#0f1713;
+      --text:#eef8f2;
+      --muted:#98aaa0;
+      --dim:#5f7368;
+      --line:rgba(226,255,238,.10);
+      --white:#fff;
+      --shadow:0 30px 90px rgba(0,0,0,.45);
+      --radius:24px;
+      --max:1220px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      background:
+        radial-gradient(circle at 70% -10%, rgba(61,190,114,.20), transparent 34%),
+        radial-gradient(circle at 0% 20%, rgba(61,190,114,.08), transparent 30%),
+        linear-gradient(180deg,#020403 0%,#050807 48%,#020403 100%);
+    }
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background:
+        linear-gradient(rgba(61,190,114,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(61,190,114,.035) 1px, transparent 1px);
+      background-size:64px 64px;
+      mask-image:radial-gradient(circle at 50% 20%, #000, transparent 74%);
+      pointer-events:none;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max), calc(100% - 44px)); margin-inline:auto}
+    .noise{
+      pointer-events:none;
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      opacity:.07;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+
+    /* NAV */
+    .nav{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:50;
+      transition:.35s ease;
+    }
+    .nav.scrolled{
+      background:rgba(2,4,3,.76);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      width:min(var(--max), calc(100% - 44px));
+      height:82px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:14px;font-weight:800;letter-spacing:-.04em;
+    }
+    .brand-mark{
+      width:42px;height:42px;border:1px solid var(--green-line);
+      display:grid;place-items:center;border-radius:14px;
+      background:linear-gradient(145deg, rgba(61,190,114,.14), rgba(255,255,255,.03));
+      box-shadow:0 0 28px rgba(61,190,114,.10);
+      color:var(--green);
+      font-weight:900;
+    }
+    .brand span{font-size:15px}
+    .nav-links{display:flex;align-items:center;gap:26px}
+    .nav-links a{
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+    .nav-links a:hover{color:var(--green)}
+    .nav-cta{
+      border:1px solid var(--green);
+      color:var(--green);
+      padding:11px 18px;
+      border-radius:999px;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+    .nav-cta:hover{background:var(--green);color:#001b0c}
+
+    /* HERO */
+    .hero{
+      min-height:100vh;
+      display:grid;
+      align-items:center;
+      padding:128px 0 70px;
+      position:relative;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      align-items:center;
+      gap:70px;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--green);
+      font-size:12px;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+    .eyebrow::before{
+      content:"";
+      width:42px;height:1px;background:var(--green);
+      box-shadow:0 0 18px rgba(61,190,114,.7);
+    }
+    h1{
+      margin-top:24px;
+      font-size:clamp(48px, 7vw, 92px);
+      line-height:.94;
+      letter-spacing:-.075em;
+      font-weight:900;
+    }
+    .accent{color:var(--green)}
+    .hero-copy{
+      max-width:680px;
+      margin-top:26px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.85;
+    }
+    .hero-copy strong{color:var(--text);font-weight:600}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:50px;
+      padding:0 22px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      transition:.25s ease;
+      border:1px solid var(--line);
+    }
+    .btn-primary{background:var(--green); color:#001b0c; border-color:var(--green)}
+    .btn-primary:hover{transform:translateY(-2px); box-shadow:0 16px 42px rgba(61,190,114,.18)}
+    .btn-outline{color:var(--text)}
+    .btn-outline:hover{border-color:var(--green); color:var(--green); transform:translateY(-2px)}
+    .hero-meta{
+      margin-top:44px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      max-width:710px;
+    }
+    .meta-card{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.025);
+      border-radius:18px;
+      padding:18px;
+    }
+    .meta-card strong{
+      display:block;
+      color:var(--text);
+      font-size:26px;
+      letter-spacing:-.05em;
+      line-height:1;
+    }
+    .meta-card span{
+      display:block;
+      margin-top:7px;
+      color:var(--dim);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+    .portrait-wrap{
+      position:relative;
+      min-height:620px;
+      display:grid;
+      place-items:center;
+    }
+    .portrait-wrap::before{
+      content:"";
+      position:absolute;
+      width:min(520px,90%);
+      aspect-ratio:1/1;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(61,190,114,.22), transparent 68%);
+      filter:blur(22px);
+      transform:translateY(36px);
+    }
+    .portrait-card{
+      position:relative;
+      width:min(500px,100%);
+      border:1px solid var(--green-line);
+      border-radius:34px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:linear-gradient(145deg, rgba(61,190,114,.08), rgba(255,255,255,.03));
+      transform:rotate(1.4deg);
+    }
+    .portrait-card img{
+      width:100%;
+      height:620px;
+      object-fit:cover;
+      object-position:center;
+      filter:saturate(.95) contrast(1.04);
+      transform:scale(1.02);
+    }
+    .portrait-tag{
+      position:absolute;
+      left:18px;right:18px;bottom:18px;
+      padding:16px 18px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:rgba(2,4,3,.68);
+      backdrop-filter:blur(16px);
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:center;
+    }
+    .portrait-tag small{
+      color:var(--green);
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+    .portrait-tag span{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      margin-top:2px;
+    }
+    .availability{
+      color:var(--text);
+      font-size:12px;
+      border:1px solid rgba(61,190,114,.28);
+      background:rgba(61,190,114,.08);
+      padding:8px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+
+    /* COMMON */
+    section{padding:110px 0}
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:40px;
+      margin-bottom:48px;
+    }
+    .section-title{
+      margin-top:14px;
+      font-size:clamp(34px,4.8vw,62px);
+      line-height:1;
+      letter-spacing:-.06em;
+      font-weight:900;
+    }
+    .section-intro{
+      max-width:490px;
+      color:var(--muted);
+      line-height:1.85;
+    }
+    .surface{
+      background:
+        radial-gradient(circle at 10% 10%, rgba(61,190,114,.08), transparent 32%),
+        var(--surface);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* ABOUT */
+    .about-grid{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:36px;
+      align-items:stretch;
+    }
+    .about-statement{
+      padding:42px;
+      border-radius:var(--radius);
+      background:linear-gradient(145deg, rgba(61,190,114,.12), rgba(255,255,255,.035));
+      border:1px solid var(--green-line);
+      min-height:360px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .about-statement h2{
+      font-size:clamp(30px,4vw,54px);
+      line-height:1.05;
+      letter-spacing:-.06em;
+    }
+    .about-statement p{
+      color:var(--muted);
+      margin-top:24px;
+      font-size:16px;
+      line-height:1.85;
+    }
+    .about-cards{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+    }
+    .skill-card{
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.024);
+    }
+    .skill-card .num{
+      color:var(--green);
+      font-size:12px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+    .skill-card h3{
+      margin-top:16px;
+      font-size:20px;
+      letter-spacing:-.035em;
+    }
+    .skill-card p{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
+    }
+
+    /* EXPERIENCE */
+    .timeline{
+      display:grid;
+      gap:14px;
+    }
+    .role{
+      display:grid;
+      grid-template-columns:190px 1fr;
+      gap:28px;
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.027), rgba(255,255,255,.012));
+      transition:.28s ease;
+    }
+    .role:hover{border-color:var(--green-line);transform:translateY(-2px)}
+    .role-date{
+      color:var(--green);
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+    .role h3{font-size:21px;letter-spacing:-.03em}
+    .role strong{display:block;color:var(--muted);font-weight:500;margin-top:4px}
+    .role p{color:var(--muted);margin-top:12px;line-height:1.8}
+    .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .badge{
+      border:1px solid var(--line);
+      color:var(--muted);
+      background:rgba(255,255,255,.018);
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+    }
+
+    /* TOOLS */
+    .tools-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+    .tool-box{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.022);
+      border-radius:20px;
+      padding:24px;
+    }
+    .tool-box h3{font-size:16px;color:var(--green);letter-spacing:-.02em}
+    .tool-box p{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.75}
+
+    /* PORTFOLIO */
+    .portfolio-nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:40px;
+    }
+    .chip{
+      background:rgba(255,255,255,.025);
+      border:1px solid var(--line);
+      color:var(--muted);
+      padding:10px 14px;
+      border-radius:999px;
+      font-family:inherit;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+    .chip.active,.chip:hover{border-color:var(--green);color:var(--green);background:rgba(61,190,114,.06)}
+    .portfolio-category{
+      margin-top:52px;
+      padding-top:44px;
+      border-top:1px solid var(--line);
+    }
+    .portfolio-category:first-of-type{margin-top:0}
+    .category-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:24px;
+      margin-bottom:22px;
+    }
+    .category-head h3{
+      font-size:30px;
+      line-height:1.1;
+      letter-spacing:-.045em;
+    }
+    .category-head p{
+      max-width:520px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
+      margin-top:8px;
+    }
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:16px;
+    }
+    .work-card{
+      position:relative;
+      min-height:270px;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:var(--surface2);
+      cursor:pointer;
+      transition:.32s ease;
+    }
+    .work-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(61,190,114,.46);
+      box-shadow:0 24px 80px rgba(0,0,0,.35);
+    }
+    .work-card img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:saturate(.9) contrast(1.05) brightness(.75);
+      transition:.45s ease;
+    }
+    .work-card:hover img{transform:scale(1.05);filter:saturate(1.05) contrast(1.08) brightness(.9)}
+    .work-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.90), rgba(0,0,0,.18) 62%, rgba(0,0,0,.08));
+      z-index:1;
+    }
+    .work-meta{
+      position:absolute;
+      z-index:2;
+      left:18px;right:18px;bottom:18px;
+    }
+    .work-meta small{
+      color:var(--green);
+      font-size:10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+    .work-meta h4{
+      margin-top:8px;
+      font-size:18px;
+      line-height:1.15;
+      letter-spacing:-.03em;
+    }
+    .work-meta p{
+      margin-top:8px;
+      color:rgba(238,248,242,.68);
+      font-size:12px;
+      line-height:1.5;
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
+    .play-icon{
+      position:absolute;
+      top:16px;right:16px;
+      z-index:2;
+      width:44px;height:44px;
+      display:grid;place-items:center;
+      border:1px solid rgba(61,190,114,.45);
+      border-radius:50%;
+      color:var(--green);
+      background:rgba(0,0,0,.35);
+      backdrop-filter:blur(12px);
+      font-size:14px;
+    }
+    .show-more{
+      margin:24px auto 0;
+      display:flex;
+      border:1px solid var(--green);
+      color:var(--green);
+      background:transparent;
+      padding:12px 20px;
+      border-radius:999px;
+      font-family:inherit;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+    .show-more:hover{background:var(--green);color:#001b0c}
+    .work-card.hidden{display:none}
+
+    /* HIRING FIT */
+    .fit-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+    .fit-card{
+      min-height:230px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:30px;
+      background:rgba(255,255,255,.025);
+    }
+    .fit-card h3{font-size:20px;letter-spacing:-.03em;color:var(--text)}
+    .fit-card p{color:var(--muted);margin-top:12px;font-size:14px;line-height:1.8}
+    .fit-card span{color:var(--green);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
+
+    /* CONTACT */
+    .contact-card{
+      border:1px solid var(--green-line);
+      border-radius:34px;
+      padding:52px;
+      background:
+        radial-gradient(circle at 82% 12%, rgba(61,190,114,.18), transparent 34%),
+        linear-gradient(145deg, rgba(61,190,114,.09), rgba(255,255,255,.025));
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:38px;
+      align-items:center;
+    }
+    .contact-card h2{
+      font-size:clamp(34px,5vw,64px);
+      line-height:1;
+      letter-spacing:-.06em;
+    }
+    .contact-card p{
+      margin-top:18px;
+      color:var(--muted);
+      line-height:1.85;
+    }
+    .contact-list{
+      display:grid;
+      gap:12px;
+    }
+    .contact-item{
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      border-radius:18px;
+      padding:16px 18px;
+      color:var(--muted);
+      transition:.25s ease;
+    }
+    .contact-item:hover{border-color:var(--green);color:var(--text)}
+    .contact-item small{
+      display:block;color:var(--green);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;margin-bottom:4px;
+    }
+    footer{
+      padding:36px 0;
+      border-top:1px solid var(--line);
+      color:var(--dim);
+      font-size:12px;
+    }
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap}
+    .footer-links a:hover{color:var(--green)}
+
+    /* MODAL */
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:80;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:26px;
+      background:rgba(0,0,0,.86);
+      backdrop-filter:blur(10px);
+    }
+    .modal.open{display:flex}
+    .modal-body{
+      width:min(1120px, 96vw);
+      max-height:90vh;
+      background:#000;
+      border:1px solid var(--green-line);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+    .modal iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+    .modal img{max-height:88vh;margin:auto;object-fit:contain}
+    .modal-close{
+      position:fixed;
+      top:22px;right:22px;
+      width:44px;height:44px;
+      border-radius:50%;
+      border:1px solid var(--green);
+      background:rgba(0,0,0,.4);
+      color:var(--green);
+      font-size:28px;
+      cursor:pointer;
+      z-index:90;
+    }
+
+    @media (max-width:1050px){
+      .hero-grid,.about-grid,.contact-card{grid-template-columns:1fr}
+      .portrait-wrap{min-height:auto}
+      .portrait-card img{height:auto}
+      .tools-grid,.portfolio-grid{grid-template-columns:repeat(2,1fr)}
+      .fit-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:760px){
+      .container,.nav-inner{width:min(100% - 28px, var(--max))}
+      .nav-inner{height:72px}
+      .nav-links{display:none}
+      .hero{padding-top:104px}
+      .hero-meta{grid-template-columns:1fr}
+      .about-cards,.tools-grid,.portfolio-grid{grid-template-columns:1fr}
+      .section-head,.category-head,.footer-inner{flex-direction:column;align-items:flex-start}
+      section{padding:78px 0}
+      .role{grid-template-columns:1fr;gap:12px;padding:22px}
+      .contact-card{padding:28px}
+      .hero-actions .btn{width:100%}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Hussein Mlhem",
+    "jobTitle":"Senior Multimedia Designer, Video Editor, AI Visual Content Creator",
+    "email":"mailto:hussein.mlhem@gmail.com",
+    "telephone":"+971542882950",
+    "address":{"@type":"PostalAddress","addressLocality":"Abu Dhabi","addressCountry":"AE"},
+    "url":"https://www.linkedin.com/in/hussein-mlhem/"
+  }
+  </script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <div class="creative-bg" aria-hidden="true">
+    <span class="signal-line line-1"></span>
+    <span class="signal-line line-2"></span>
+    <span class="signal-line line-3"></span>
+    <span class="signal-line line-4"></span>
+    <span class="bg-orb orb-1"></span>
+    <span class="bg-orb orb-2"></span>
+    <span class="bg-orb orb-3"></span>
+    <span class="data-dot dot-1"></span>
+    <span class="data-dot dot-2"></span>
+    <span class="data-dot dot-3"></span>
+    <span class="data-dot dot-4"></span>
+    <span class="data-dot dot-5"></span>
+    <span class="data-dot dot-6"></span>
+  </div>
+  <div class="mouse-glow" id="mouseGlow" aria-hidden="true"></div>
+  <div class="cursor-orb" id="cursorOrb" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Hussein Mlhem">
+        <span class="brand-mark">HM</span>
+        <span>Hussein Mlhem</span>
+      </a>
+      <div class="nav-links" aria-label="Main navigation">
+        <a href="#about">Profile</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#experience">Experience</a>
+        <a href="#tools">Tools</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="assets/Hussein-Mlhem-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="eyebrow">Abu Dhabi Based Creative</div>
+          <h1>Senior Multimedia Designer <span class="accent">& AI Visual</span> Content Creator.</h1>
+          <p class="hero-copy">
+            I create <strong>motion graphics, AI video concepts, social media campaigns, event content, websites, e-commerce pages, logo animation, and n8n automation workflows</strong> — combining creative execution with marketing logic and production-ready systems.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#portfolio">View Portfolio</a>
+            <a class="btn btn-outline" href="mailto:hussein.mlhem@gmail.com">Contact Me</a>
+            <a class="btn btn-outline" href="https://www.linkedin.com/in/hussein-mlhem/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <div class="hero-meta" aria-label="Key profile statistics">
+            <div class="meta-card"><strong>9+</strong><span>Years Experience</span></div>
+            <div class="meta-card"><strong>1,000+</strong><span>Creative Assets</span></div>
+            <div class="meta-card"><strong>500+</strong><span>Freelance Projects</span></div>
+          </div>
+        </div>
+        <div class="portrait-wrap reveal">
+          <div class="portrait-card">
+            <picture>
+              <source srcset="assets/hussein-mlhem-profile.webp" type="image/webp">
+              <img src="assets/hussein-mlhem-profile.jpg" alt="Portrait of Hussein Mlhem">
+            </picture>
+            <div class="portrait-tag">
+              <div>
+                <small>Creative + Tech</small>
+                <span>Video • Design • AI • Web • Automation</span>
+              </div>
+              <div class="availability">UAE Driving License</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="surface" id="about">
+      <div class="container about-grid">
+        <div class="about-statement reveal">
+          <div>
+            <div class="eyebrow">Professional Profile</div>
+            <h2>One creative operator for campaigns, production, and smart workflows.</h2>
+          </div>
+          <p>
+            My strength is not limited to one software or one content format. I connect brand communication, video production, design systems, AI-assisted visual creation, web basics, and automation to help marketing teams move faster without losing quality.
+          </p>
+        </div>
+        <div class="about-cards">
+          <article class="skill-card reveal">
+            <div class="num">01</div>
+            <h3>Video & Motion Production</h3>
+            <p>Reels, ads, corporate videos, explainers, event edits, brand films, motion graphics, post-production, and presentation videos.</p>
+          </article>
+          <article class="skill-card reveal">
+            <div class="num">02</div>
+            <h3>AI-Assisted Visual Content</h3>
+            <p>Prompt engineering, photoreal product visuals, cinematic scene planning, image-to-video workflows, storyboards, and visual enhancement.</p>
+          </article>
+          <article class="skill-card reveal">
+            <div class="num">03</div>
+            <h3>Marketing & Brand Assets</h3>
+            <p>Campaign visuals, paid ads creatives, product launch materials, brochures, social media content, pitch decks, and brand-consistent designs.</p>
+          </article>
+          <article class="skill-card reveal">
+            <div class="num">04</div>
+            <h3>Web & Automation</h3>
+            <p>Portfolio websites, landing pages, Shopify and Wix basics, HTML/CSS/JS fundamentals, and n8n workflows for content and operations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Selected Work</div>
+            <h2 class="section-title">Portfolio by discipline.</h2>
+          </div>
+          <p class="section-intro">
+            Each category shows only four items first to keep the page clean for HR and hiring managers. Use “View All” to expand the full category.
+          </p>
+        </div>
+
+        <div class="portfolio-nav reveal" id="portfolioChips"></div>
+        <div id="portfolioSections"></div>
+      </div>
+    </section>
+
+    <section class="surface" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Career Proof</div>
+            <h2 class="section-title">Experience that supports the portfolio.</h2>
+          </div>
+          <p class="section-intro">
+            A practical background across UAE brands, freelance international clients, creative production, marketing operations, and project coordination.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="role reveal">
+            <div class="role-date">May 2024 — Present</div>
+            <div>
+              <h3>Marketing Operations Executive / Multimedia Lead</h3>
+              <strong>Baynunah Official — Ma Hawa, Abu Dhabi</strong>
+              <p>Leading visual content, campaign assets, product visuals, presentations, brochures, and event-related design materials while applying AI-assisted workflows for product visualization and campaign concepts.</p>
+              <div class="badge-row"><span class="badge">Employee of the Year</span><span class="badge">AI Visuals</span><span class="badge">Campaign Assets</span></div>
+            </div>
+          </article>
+
+          <article class="role reveal">
+            <div class="role-date">Jun 2023 — May 2024</div>
+            <div>
+              <h3>Senior Video Editor & Motion Designer</h3>
+              <strong>Super Future Technology, Dubai</strong>
+              <p>Produced premium motion graphics, short-form video ads, social media videos, and marketing content for commercial projects in the UAE.</p>
+              <div class="badge-row"><span class="badge">Motion Design</span><span class="badge">Video Ads</span><span class="badge">Digital Campaigns</span></div>
+            </div>
+          </article>
+
+          <article class="role reveal">
+            <div class="role-date">Feb 2021 — May 2023</div>
+            <div>
+              <h3>Project Manager</h3>
+              <strong>Palmenburg, Germany — Remote</strong>
+              <p>Managed remote technical and creative projects, coordinated stakeholders and delivery requirements, and maintained project quality across digital workflows.</p>
+              <div class="badge-row"><span class="badge">Project Management</span><span class="badge">Remote Teams</span><span class="badge">Quality Control</span></div>
+            </div>
+          </article>
+
+          <article class="role reveal">
+            <div class="role-date">Jan 2017 — Present</div>
+            <div>
+              <h3>Freelance Motion Graphic Designer / Video Editor</h3>
+              <strong>Upwork / H.M Media Production</strong>
+              <p>Delivered 500+ projects for international clients across motion graphics, video editing, animation, design, explainers, corporate videos, and presentation visuals.</p>
+              <div class="badge-row"><span class="badge">Upwork Top Rated</span><span class="badge">500+ Projects</span><span class="badge">Client Communication</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Tool Stack</div>
+            <h2 class="section-title">Built for modern content teams.</h2>
+          </div>
+          <p class="section-intro">A practical stack covering classic production, AI creation, marketing platforms, web basics, and workflow automation.</p>
+        </div>
+        <div class="tools-grid">
+          <article class="tool-box reveal"><h3>Creative Production</h3><p>After Effects, Premiere Pro, Photoshop, Illustrator, Adobe XD, Canva, PowerPoint, Microsoft Office.</p></article>
+          <article class="tool-box reveal"><h3>AI Creative</h3><p>ChatGPT, Midjourney, Runway, Kling AI, Pika Labs, Freepik AI, Adobe Firefly, Stable Diffusion, Leonardo AI, Nano Banana, Gemini, ElevenLabs.</p></article>
+          <article class="tool-box reveal"><h3>Marketing</h3><p>Meta Ads Manager, TikTok Ads Manager, social media platforms, content planning, campaign creative production.</p></article>
+          <article class="tool-box reveal"><h3>Web & Automation</h3><p>Shopify basics, Wix, WordPress basics, HTML, CSS, JavaScript basics, PHP basics, n8n workflow automation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="surface">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Hiring Fit</div>
+            <h2 class="section-title">Why HR should keep scrolling.</h2>
+          </div>
+          <p class="section-intro">The page is structured to answer the three questions recruiters care about: what you do, what proof you have, and how fast you can add value.</p>
+        </div>
+        <div class="fit-grid">
+          <article class="fit-card reveal"><span>01</span><h3>Hybrid creative profile</h3><p>Not just a designer, not just an editor. The profile covers video, design, AI visuals, web, and automation — useful for lean marketing teams.</p></article>
+          <article class="fit-card reveal"><span>02</span><h3>Commercial execution</h3><p>The portfolio is organized around real business outputs: ads, campaigns, product visuals, websites, events, and workflows.</p></article>
+          <article class="fit-card reveal"><span>03</span><h3>Production speed</h3><p>AI and n8n are positioned as workflow advantages, not buzzwords: faster ideation, asset generation, review, publishing, and content systems.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div>
+            <div class="eyebrow">Let’s Talk</div>
+            <h2>Available for creative, AI content, and marketing production roles.</h2>
+            <p>For HR, recruiters, and clients: use the links on the right to review my CV, LinkedIn profile, video portfolio, or contact me directly.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="mailto:hussein.mlhem@gmail.com">Send Email</a>
+              <a class="btn btn-outline" href="assets/Hussein-Mlhem-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+            </div>
+          </div>
+          <div class="contact-list">
+            <a class="contact-item" href="mailto:hussein.mlhem@gmail.com"><small>Email</small>hussein.mlhem@gmail.com</a>
+            <a class="contact-item" href="tel:+971542882950"><small>Phone</small>+971 54 2882 950</a>
+            <a class="contact-item" href="https://www.linkedin.com/in/hussein-mlhem/" target="_blank" rel="noopener"><small>LinkedIn</small>linkedin.com/in/hussein-mlhem</a>
+            <a class="contact-item" href="https://youtube.com/playlist?list=PLqqrYKCZFlioU3ZsRjw3uf1_qfNR9sRE5" target="_blank" rel="noopener"><small>Video Portfolio</small>YouTube Portfolio Playlist</a>
+            <a class="contact-item" href="https://drive.google.com/drive/folders/18fJenuvdIe-quElXLWxlJx9Eoja3kofa" target="_blank" rel="noopener"><small>Visual Portfolio</small>Google Drive Portfolio Folder</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Hussein Mlhem. Senior Multimedia Designer & AI Visual Content Creator.</div>
+      <div class="footer-links">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+
+  <script>
+    const CATEGORIES = [
+      { key:"motion", title:"Motion Graphics Videos", type:"video", cover:"assets/portfolio/motion.svg", desc:"Explainer videos, animated ads, social content, corporate motion graphics, and presentation videos." },
+      { key:"ai-video", title:"AI Video & Cinematic Concepts", type:"video", cover:"assets/portfolio/ai-video.svg", desc:"AI-assisted commercial scenes, product films, image-to-video workflows, prompt-led storytelling, and cinematic visual concepts." },
+      { key:"event", title:"Event Videography", type:"video", cover:"assets/portfolio/event.svg", desc:"Event coverage, highlight reels, social recaps, branded event content, and post-production for UAE activations." },
+      { key:"websites", title:"Websites & Landing Pages", type:"image", cover:"assets/portfolio/websites.svg", desc:"Portfolio pages, landing pages, campaign pages, and clean web layouts focused on clarity and conversion." },
+      { key:"ecommerce", title:"E-Commerce Websites", type:"image", cover:"assets/portfolio/ecommerce.svg", desc:"Shopify, Wix, and product-focused web experiences with clear UX, product hierarchy, and brand-consistent layouts." },
+      { key:"social-design", title:"Social Media Designs", type:"image", cover:"assets/portfolio/social-design.svg", desc:"Static posts, paid ad creatives, launch visuals, carousel concepts, and campaign design systems." },
+      { key:"logo-animation", title:"Logo Animation", type:"video", cover:"assets/portfolio/logo-animation.svg", desc:"Logo reveals, animated brand marks, intro/outro animations, and clean identity motion." },
+      { key:"automation", title:"n8n Automation Workflows", type:"image", cover:"assets/portfolio/automation.svg", desc:"Workflow screenshots and case studies for content generation, approvals, publishing, notifications, and operations." }
+    ];
+
+    const DEFAULT_ITEMS = {};
+    CATEGORIES.forEach(cat => {
+      DEFAULT_ITEMS[cat.key] = Array.from({length:4}).map((_,i)=>({
+        category:cat.key,
+        title:`${cat.title} — Project ${String(i+1).padStart(2,"0")}`,
+        meta: cat.type === "video" ? "Add Video Link" : "Add Image",
+        description:"Replace this placeholder with your real project, thumbnail, and link.",
+        image:cat.cover,
+        url:"#",
+        mediaType:cat.type,
+        placeholder:true
+      }));
+    });
+
+    const portfolioSections = document.getElementById("portfolioSections");
+    const portfolioChips = document.getElementById("portfolioChips");
+    const modal = document.getElementById("modal");
+    const modalBody = document.getElementById("modalBody");
+    const modalClose = document.getElementById("modalClose");
+
+    function youtubeId(url){
+      if(!url) return "";
+      const patterns = [
+        /youtu\.be\/([^?&#/]+)/,
+        /youtube\.com\/watch\?v=([^?&#/]+)/,
+        /youtube\.com\/embed\/([^?&#/]+)/,
+        /youtube\.com\/shorts\/([^?&#/]+)/
+      ];
+      for(const p of patterns){
+        const m = url.match(p);
+        if(m) return m[1];
+      }
+      return "";
+    }
+    function vimeoId(url){
+      if(!url) return "";
+      const m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+      return m ? m[1] : "";
+    }
+    function getThumb(item, cat){
+      if(item.image) return item.image;
+      if(item.thumbnail) return item.thumbnail;
+      const yt = youtubeId(item.url);
+      if(yt) return `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
+      return cat.cover;
+    }
+    function parseVideoText(text){
+      return text.split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(line => line && !line.startsWith("#"))
+        .map(line => {
+          const parts = line.split("|").map(x => x.trim());
+          if(parts.length === 1) return {category:"motion", title:"Video Project", url:parts[0], mediaType:"video"};
+          if(parts.length === 2) return {category:parts[0], title:"Video Project", url:parts[1], mediaType:"video"};
+          return {
+            category:parts[0] || "motion",
+            title:parts[1] || "Video Project",
+            url:parts[2] || "#",
+            thumbnail:parts[3] || "",
+            meta:parts[4] || "Video",
+            mediaType:"video"
+          };
+        });
+    }
+    async function loadPortfolio(){
+      let videoItems = [];
+      let imageItems = [];
+      try {
+        const res = await fetch("data/portfolio-videos.txt", {cache:"no-store"});
+        if(res.ok) videoItems = parseVideoText(await res.text());
+      } catch(e){}
+      try {
+        const res = await fetch("data/portfolio-items.json", {cache:"no-store"});
+        if(res.ok) {
+          const data = await res.json();
+          imageItems = Array.isArray(data) ? data : (data.items || []);
+          imageItems = imageItems.map(item => ({...item, mediaType:"image"}));
+        }
+      } catch(e){}
+      const allItems = [...videoItems, ...imageItems].filter(item => item && item.category);
+      renderPortfolio(allItems);
+    }
+    function renderPortfolio(allItems){
+      portfolioChips.innerHTML = `<button class="chip active" data-filter="all">All</button>` + CATEGORIES.map(c => `<button class="chip" data-filter="${c.key}">${c.title}</button>`).join("");
+      portfolioSections.innerHTML = "";
+
+      CATEGORIES.forEach(cat => {
+        const realItems = allItems.filter(item => item.category === cat.key);
+        const items = realItems.length ? realItems : DEFAULT_ITEMS[cat.key];
+        const section = document.createElement("section");
+        section.className = "portfolio-category reveal";
+        section.dataset.category = cat.key;
+        section.innerHTML = `
+          <div class="category-head">
+            <div>
+              <h3>${cat.title}</h3>
+              <p>${cat.desc}</p>
+            </div>
+          </div>
+          <div class="portfolio-grid"></div>
+          ${items.length > 4 ? `<button class="show-more">View All</button>` : ``}
+        `;
+        const grid = section.querySelector(".portfolio-grid");
+        items.forEach((item, index) => {
+          const card = document.createElement("article");
+          card.className = `work-card ${index > 3 ? "hidden" : ""}`;
+          card.tabIndex = 0;
+          const thumb = getThumb(item, cat);
+          const play = (item.mediaType === "video" || cat.type === "video") ? "▶" : "↗";
+          card.innerHTML = `
+            <img src="${thumb}" alt="${escapeHtml(item.title || cat.title)}" loading="lazy" onerror="this.src='${cat.cover}'">
+            <div class="play-icon">${play}</div>
+            <div class="work-meta">
+              <small>${escapeHtml(item.meta || cat.title)}</small>
+              <h4>${escapeHtml(item.title || cat.title)}</h4>
+              <p>${escapeHtml(item.description || "Project item")}</p>
+            </div>
+          `;
+          card.addEventListener("click", () => openProject(item, cat));
+          card.addEventListener("keydown", (e) => { if(e.key === "Enter") openProject(item, cat); });
+          grid.appendChild(card);
+        });
+        const btn = section.querySelector(".show-more");
+        if(btn){
+          btn.addEventListener("click", () => {
+            const hidden = section.querySelectorAll(".work-card.hidden");
+            const collapsed = hidden.length > 0;
+            section.querySelectorAll(".work-card").forEach((card, idx) => card.classList.toggle("hidden", !collapsed && idx > 3));
+            btn.textContent = collapsed ? "Show Less" : "View All";
+          });
+        }
+        portfolioSections.appendChild(section);
+      });
+
+      document.querySelectorAll(".chip").forEach(chip => {
+        chip.addEventListener("click", () => {
+          document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+          chip.classList.add("active");
+          const filter = chip.dataset.filter;
+          document.querySelectorAll(".portfolio-category").forEach(sec => {
+            sec.style.display = (filter === "all" || sec.dataset.category === filter) ? "" : "none";
+          });
+        });
+      });
+
+      observeReveals();
+    }
+    function escapeHtml(str){
+      return String(str || "").replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[s]));
+    }
+    function openProject(item, cat){
+      if(item.placeholder || !item.url || item.url === "#"){
+        modalBody.innerHTML = `<div style="padding:34px;color:#eef8f2;background:#050807">
+          <h3 style="font-size:28px;line-height:1.1;margin-bottom:10px">Add your real project here</h3>
+          <p style="color:#98aaa0;line-height:1.8">Update <strong>data/portfolio-videos.txt</strong> for video categories, or <strong>data/portfolio-items.json</strong> for image/web/automation categories.</p>
+        </div>`;
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden","false");
+        return;
+      }
+      const yt = youtubeId(item.url);
+      const vm = vimeoId(item.url);
+      if(yt){
+        modalBody.innerHTML = `<iframe src="https://www.youtube.com/embed/${yt}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="${escapeHtml(item.title)}"></iframe>`;
+        modal.classList.add("open");
+      } else if(vm){
+        modalBody.innerHTML = `<iframe src="https://player.vimeo.com/video/${vm}?autoplay=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${escapeHtml(item.title)}"></iframe>`;
+        modal.classList.add("open");
+      } else if(item.mediaType === "image" || cat.type === "image"){
+        if(item.url && item.url !== "#"){
+          window.open(item.url, "_blank", "noopener");
+        } else {
+          const img = item.image || cat.cover;
+          modalBody.innerHTML = `<img src="${img}" alt="${escapeHtml(item.title)}">`;
+          modal.classList.add("open");
+        }
+      } else {
+        window.open(item.url, "_blank", "noopener");
+      }
+      modal.setAttribute("aria-hidden","false");
+    }
+    function closeModal(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden","true");
+      modalBody.innerHTML = "";
+    }
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", e => { if(e.target === modal) closeModal(); });
+    document.addEventListener("keydown", e => { if(e.key === "Escape") closeModal(); });
+
+
+    function initCreativeFX(){
+      const finePointer = window.matchMedia('(pointer:fine)').matches;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!finePointer || reducedMotion) return;
+
+      const orb = document.getElementById('cursorOrb');
+      const dot = document.getElementById('cursorDot');
+      const glow = document.getElementById('mouseGlow');
+      if(!orb || !dot || !glow) return;
+
+      let x = window.innerWidth / 2;
+      let y = window.innerHeight / 2;
+      let ox = x;
+      let oy = y;
+      let trailTimer = 0;
+
+      const move = (e) => {
+        x = e.clientX;
+        y = e.clientY;
+        document.body.classList.add('cursor-active');
+        dot.style.transform = `translate3d(${x}px,${y}px,0) translate(-50%,-50%)`;
+        glow.style.transform = `translate3d(${x}px,${y}px,0) translate(-50%,-50%)`;
+
+        trailTimer++;
+        if(trailTimer % 5 === 0){
+          const trail = document.createElement('span');
+          trail.className = 'cursor-trail';
+          trail.style.left = x + 'px';
+          trail.style.top = y + 'px';
+          document.body.appendChild(trail);
+          setTimeout(() => trail.remove(), 740);
+        }
+      };
+
+      const animate = () => {
+        ox += (x - ox) * 0.18;
+        oy += (y - oy) * 0.18;
+        orb.style.transform = `translate3d(${ox}px,${oy}px,0) translate(-50%,-50%)`;
+        requestAnimationFrame(animate);
+      };
+
+      window.addEventListener('mousemove', move, {passive:true});
+      animate();
+
+      const hoverTargets = 'a, button, .work-card, .skill-card, .tool-box, .fit-card, .contact-item, .meta-card';
+      document.addEventListener('mouseover', (e) => {
+        if(e.target.closest(hoverTargets)) document.body.classList.add('cursor-hover');
+      });
+      document.addEventListener('mouseout', (e) => {
+        if(e.target.closest(hoverTargets)) document.body.classList.remove('cursor-hover');
+      });
+
+      const highlightTargets = '.work-card, .skill-card, .tool-box, .fit-card, .contact-item, .meta-card';
+      document.addEventListener('mousemove', (e) => {
+        const card = e.target.closest(highlightTargets);
+        if(!card) return;
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      }, {passive:true});
+
+      window.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+    }
+
+    function observeReveals(){
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {threshold:.12});
+      document.querySelectorAll(".reveal:not(.visible)").forEach(el => observer.observe(el));
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const nav = document.getElementById("nav");
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 20);
+    });
+    loadPortfolio();
+    observeReveals();
+  </script>
+</body>
+</html>
