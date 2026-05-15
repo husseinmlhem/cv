@@ -976,13 +976,115 @@ h1,
   animation-duration:2.2s!important;
 }
 
+
+/* HM_HEADER_LIGHTBOX_V10 */
+
+/* Cleaner header */
+.brand small{
+  display:none!important;
+}
+.links{
+  gap:14px!important;
+}
+.links a{
+  font-size:10.5px!important;
+  letter-spacing:.04em!important;
+}
+.nav,
+.navIn{
+  min-height:68px!important;
+}
+.brand{
+  font-size:18px!important;
+}
+
+/* In-page media modal for portfolio videos/images */
+.mediaModal{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(16px);
+}
+.mediaModal.isOpen{
+  display:flex;
+}
+.mediaModalBox{
+  position:relative;
+  width:min(1120px,96vw);
+  max-height:88vh;
+  border-radius:28px;
+  overflow:hidden;
+  border:1px solid rgba(226,255,238,.16);
+  background:#020403;
+  box-shadow:0 40px 120px rgba(0,0,0,.55);
+}
+.mediaModalFrame{
+  width:100%;
+  aspect-ratio:16/9;
+  display:grid;
+  place-items:center;
+  background:#000;
+}
+.mediaModalFrame iframe,
+.mediaModalFrame img{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+.mediaModalFrame img{
+  object-fit:contain;
+  max-height:88vh;
+  background:#020403;
+}
+.mediaModalClose{
+  position:absolute;
+  top:14px;
+  right:14px;
+  z-index:3;
+  width:44px;
+  height:44px;
+  border:1px solid rgba(226,255,238,.18);
+  border-radius:999px;
+  background:rgba(2,4,3,.72);
+  color:var(--text);
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+}
+.mediaModalClose:hover{
+  color:var(--green);
+  border-color:rgba(61,190,114,.42);
+}
+.mediaModalCaption{
+  padding:14px 18px;
+  color:var(--muted);
+  font-size:13px;
+  border-top:1px solid rgba(226,255,238,.10);
+}
+@media(max-width:800px){
+  .nav,.navIn{min-height:64px!important}
+  .brand{font-size:17px!important}
+  .links a{font-size:10px!important}
+  .mediaModal{padding:12px}
+  .mediaModalBox{border-radius:20px}
+  .mediaModalClose{width:40px;height:40px;top:10px;right:10px}
+}
+
 </style>
 </head>
 
 
 
 
-<!-- HM_STRONG_TEXT_GRADIENT_V9 -->
+
+<!-- HM_HEADER_LIGHTBOX_V10 -->
 <body>
 
 <div class="scrollProgress" id="scrollProgress"></div>
@@ -1342,4 +1444,85 @@ document.addEventListener('DOMContentLoaded',function(){
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
   </a>
 </div>
+<div class="mediaModal" id="mediaModal" aria-hidden="true">
+  <div class="mediaModalBox" role="dialog" aria-modal="true" aria-label="Portfolio media preview">
+    <button class="mediaModalClose" id="mediaModalClose" type="button" aria-label="Close preview">×</button>
+    <div class="mediaModalFrame" id="mediaModalFrame"></div>
+    <div class="mediaModalCaption" id="mediaModalCaption"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function getYouTubeId(url){
+    try{
+      var p=new URL(url);
+      var host=p.hostname.replace(/^www\./,'').toLowerCase();
+      if(host==='youtu.be') return p.pathname.split('/').filter(Boolean)[0] || '';
+      if(host==='youtube.com' || host==='m.youtube.com'){
+        if(p.pathname.indexOf('/shorts/')===0) return p.pathname.split('/').filter(Boolean)[1] || '';
+        return p.searchParams.get('v') || '';
+      }
+      return '';
+    }catch(e){return ''}
+  }
+  function isImageUrl(url){
+    try{
+      var path=new URL(url).pathname.toLowerCase();
+      return path.endsWith('.webp') || path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.jpeg') || path.endsWith('.gif');
+    }catch(e){return false}
+  }
+  function openMediaModal(type,url,title){
+    var modal=document.getElementById('mediaModal');
+    var frame=document.getElementById('mediaModalFrame');
+    var caption=document.getElementById('mediaModalCaption');
+    if(!modal || !frame) return;
+    frame.innerHTML='';
+    if(type==='youtube'){
+      var id=getYouTubeId(url);
+      frame.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    }else if(type==='image'){
+      frame.innerHTML='<img src="'+url+'" alt="'+(title||'Portfolio image')+'">';
+    }
+    if(caption) caption.textContent=title || url;
+    modal.classList.add('isOpen');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function closeMediaModal(){
+    var modal=document.getElementById('mediaModal');
+    var frame=document.getElementById('mediaModalFrame');
+    if(!modal || !frame) return;
+    modal.classList.remove('isOpen');
+    modal.setAttribute('aria-hidden','true');
+    frame.innerHTML='';
+    document.body.style.overflow='';
+  }
+  document.addEventListener('click',function(e){
+    var close=e.target.closest('#mediaModalClose');
+    if(close){closeMediaModal();return;}
+    var modal=e.target.id==='mediaModal';
+    if(modal){closeMediaModal();return;}
+    var card=e.target.closest('a.work');
+    if(!card) return;
+    var url=card.getAttribute('href') || '';
+    var yt=getYouTubeId(url);
+    var titleNode=card.querySelector('.workText h3');
+    var title=titleNode ? titleNode.textContent.trim() : 'Portfolio preview';
+    if(yt){
+      e.preventDefault();
+      openMediaModal('youtube',url,title);
+      return;
+    }
+    if(isImageUrl(url)){
+      e.preventDefault();
+      openMediaModal('image',url,title);
+    }
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') closeMediaModal();
+  });
+})();
+</script>
+
 </body></html>
