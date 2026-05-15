@@ -50,31 +50,147 @@
   <script>
     (function(){
       'use strict';
-      var FILES={motion:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/Motion.txt',ai:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/ai.txt',event:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/event.txt',web:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/web.txt',f:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/f.txt'};
+
+      var SOURCES={
+        motion:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/Motion.txt'},
+        ai:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/ai.txt'},
+        event:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/event.txt'},
+        web:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/web.txt'},
+        sm:{type:'folder',url:'https://api.github.com/repos/husseinmlhem/cv/contents/assets/SM?ref=main'},
+        prints:{type:'folder',url:'https://api.github.com/repos/husseinmlhem/cv/contents/assets/Prints?ref=main'}
+      };
+
       var categories=[
-        {id:'motion-design',file:'motion',en:'Motion Design',ar:'موشن ديزاين',descEn:'Motion graphics, logo animation, explainers, brand reveals, and animated campaign visuals.',descAr:'موشن غرافيكس، لوغو أنيميشن، إكسبلينر، كشف شعارات، ومرئيات حملات متحركة.'},
-        {id:'ai-video',file:'ai',en:'AI Video',ar:'فيديو AI',descEn:'AI-generated videos, AI-assisted editing, product scenes, cinematic ads, and creative visual experiments.',descAr:'فيديوهات مولدة بالذكاء الصناعي، مونتاج AI، مشاهد منتجات، إعلانات سينمائية، وتجارب بصرية.'},
-        {id:'video-production',file:'event',en:'Video Production',ar:'إنتاج فيديو',descEn:'Video editing, videography, event coverage, reels, ads, interviews, and highlight cuts.',descAr:'مونتاج، تصوير، تغطية إيفنتات، ريلز، إعلانات، مقابلات، وهايلايت.'},
-        {id:'web-commerce',file:'web',en:'Web Commerce',ar:'ويب ومتاجر',descEn:'Websites, landing pages, Shopify, Wix, product pages, and e-commerce campaign pages.',descAr:'مواقع، صفحات هبوط، Shopify، Wix، صفحات منتجات، وصفحات حملات للمتاجر.'},
-        {id:'social-design',file:'f',en:'Social Design',ar:'تصميم سوشال',descEn:'Static social media designs, paid-ad creatives, carousels, launch posts, and campaign visuals.',descAr:'تصاميم سوشال ثابتة، إعلانات مدفوعة، كاروسيل، بوستات إطلاق، ومرئيات حملات.'},
-        {id:'print-branding',file:null,en:'Print Branding',ar:'طباعة وهوية',descEn:'Printing, packaging, event stands, car branding, product displays, outdoor materials, and retail visuals.',descAr:'طباعة، تغليف، ستاندات فعاليات، براندينغ سيارات، عروض منتجات، ومواد خارجية.'},
-        {id:'media-buying',file:null,en:'Media Buying',ar:'شراء إعلاني',descEn:'Meta and TikTok ads, digital campaigns, audience targeting, content testing, and performance optimization.',descAr:'إعلانات Meta وTikTok، حملات رقمية، استهداف جماهير، اختبار محتوى، وتحسين الأداء.'}
+        {id:'motion-design',source:'motion',en:'Motion Design',ar:'موشن ديزاين',descEn:'Motion graphics, logo animation, explainers, brand reveals, and animated campaign visuals.',descAr:'موشن غرافيكس، لوغو أنيميشن، إكسبلينر، كشف شعارات، ومرئيات حملات متحركة.'},
+        {id:'ai-video',source:'ai',en:'AI Video',ar:'فيديو AI',descEn:'AI-generated videos, AI-assisted editing, product scenes, cinematic ads, and creative visual experiments.',descAr:'فيديوهات مولدة بالذكاء الصناعي، مونتاج AI، مشاهد منتجات، إعلانات سينمائية، وتجارب بصرية.'},
+        {id:'video-production',source:'event',en:'Video Production',ar:'إنتاج فيديو',descEn:'Video editing, videography, event coverage, reels, ads, interviews, and highlight cuts.',descAr:'مونتاج، تصوير، تغطية إيفنتات، ريلز، إعلانات، مقابلات، وهايلايت.'},
+        {id:'web-commerce',source:'web',en:'Web Commerce',ar:'ويب ومتاجر',descEn:'Websites, landing pages, Shopify, Wix, product pages, and e-commerce campaign pages.',descAr:'مواقع، صفحات هبوط، Shopify، Wix، صفحات منتجات، وصفحات حملات للمتاجر.'},
+        {id:'social-design',source:'sm',en:'Social Design',ar:'تصميم سوشال',descEn:'Static social media designs, paid-ad creatives, carousels, launch posts, and campaign visuals.',descAr:'تصاميم سوشال ثابتة، إعلانات مدفوعة، كاروسيل، بوستات إطلاق، ومرئيات حملات.'},
+        {id:'print-branding',source:'prints',en:'Print Branding',ar:'طباعة وهوية',descEn:'Printing, packaging, event stands, car branding, product displays, outdoor materials, and retail visuals.',descAr:'طباعة، تغليف، ستاندات فعاليات، براندينغ سيارات، عروض منتجات، ومواد خارجية.'},
+        {id:'media-buying',source:null,en:'Media Buying',ar:'شراء إعلاني',descEn:'Meta and TikTok ads, digital campaigns, audience targeting, content testing, and performance optimization.',descAr:'إعلانات Meta وTikTok، حملات رقمية، استهداف جماهير، اختبار محتوى، وتحسين الأداء.'}
       ];
+
       var portfolioData={};
-      function qs(s){return document.querySelector(s)}
-      function qsa(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
-      function lang(){return document.documentElement.lang==='ar'?'ar':'en'}
-      function parseLinks(text){return String(text||'').split(/\r?\n/).map(function(x){return x.trim()}).filter(function(x){return /^https?:\/\//i.test(x)})}
-      function youtubeId(url){var m=String(url).match(/youtu\.be\/([^?&/]+)/i)||String(url).match(/[?&]v=([^?&]+)/i)||String(url).match(/youtube\.com\/shorts\/([^?&/]+)/i);return m?m[1]:''}
-      function niceHost(url){try{return new URL(url).hostname.replace(/^www\./,'')}catch(e){return url}}
-      function cardImage(url,catId,index){var id=youtubeId(url);return id?'https://img.youtube.com/vi/'+id+'/hqdefault.jpg':'https://picsum.photos/seed/'+encodeURIComponent(catId+'-'+index)+'/900/700'}
-      function loadTxt(url){if(!url){return Promise.resolve([])}return fetch(url,{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(parseLinks).catch(function(){return []})}
-      function loadAllFiles(){return Promise.all(categories.map(function(cat){if(!cat.file||!FILES[cat.file]){portfolioData[cat.id]=[];return Promise.resolve()}return loadTxt(FILES[cat.file]).then(function(links){portfolioData[cat.id]=links})}))}
-      function applyLang(nextLang){document.documentElement.lang=nextLang;document.documentElement.dir=nextLang==='ar'?'rtl':'ltr';qsa('[data-en]').forEach(function(el){el.textContent=el.getAttribute(nextLang==='ar'?'data-ar':'data-en')||el.textContent});qsa('.lang button').forEach(function(btn){btn.classList.toggle('active',btn.getAttribute('data-lang')===nextLang)});renderPortfolio()}
-      function renderPortfolio(){var chips=qs('#chips'),wrap=qs('#portfolioWrap');if(!chips||!wrap){return}var ar=lang()==='ar';chips.innerHTML='<button class="chip active" data-filter="all" type="button"><span class="chipTitle">'+(ar?'كل الأعمال':'All Work')+'</span><span class="chipDesc">'+(ar?'عرض جميع فئات الأعمال المختارة في مكان واحد.':'Show all selected portfolio categories in one view.')+'</span></button>'+categories.map(function(cat){return '<button class="chip" data-filter="'+cat.id+'" type="button"><span class="chipTitle">'+(ar?cat.ar:cat.en)+'</span><span class="chipDesc">'+(ar?cat.descAr:cat.descEn)+'</span></button>'}).join('');wrap.innerHTML=categories.map(function(cat){var title=ar?cat.ar:cat.en,desc=ar?cat.descAr:cat.descEn,links=portfolioData[cat.id]||[],cards='';if(links.length){cards=links.map(function(url,i){var label=youtubeId(url)?(ar?'مشاهدة الفيديو':'Watch Video'):(ar?'فتح الرابط':'Open Link'),titleText=title+' — '+String(i+1).padStart(2,'0');return '<a class="work '+(i>2?'hidden':'')+'" href="'+url+'" target="_blank" rel="noopener"><img src="'+cardImage(url,cat.id,i)+'" alt="'+titleText+'"><div class="workText"><small>'+title+'</small><h3>'+titleText+'</h3><p>'+niceHost(url)+' · '+label+'</p></div></a>'}).join('')}else{cards='<article class="work"><img src="https://picsum.photos/seed/'+cat.id+'-empty/900/700" alt="'+title+'"><div class="workText"><small>'+title+'</small><h3>'+(ar?'سيتم الإضافة قريباً':'Coming Soon')+'</h3><p>'+(ar?'أضف الروابط داخل ملف TXT الخاص بهذه الفئة على GitHub.':'Add links to the related TXT file on GitHub.')+'</p></div></article>'}var button=links.length>3?'<button class="showMore" type="button">'+(ar?'عرض الكل':'View All')+'</button>':'';return '<section class="portfolioCat" data-cat="'+cat.id+'"><div class="head"><div><h3>'+title+'</h3><p class="intro">'+desc+'</p></div></div><div class="portfolioGrid">'+cards+'</div>'+button+'</section>'}).join('');qsa('.chip').forEach(function(btn){btn.onclick=function(){qsa('.chip').forEach(function(x){x.classList.remove('active')});btn.classList.add('active');var f=btn.getAttribute('data-filter');qsa('.portfolioCat').forEach(function(sec){sec.style.display=(f==='all'||sec.getAttribute('data-cat')===f)?'':'none'})}});qsa('.showMore').forEach(function(btn){btn.onclick=function(){var sec=btn.closest('.portfolioCat'),hidden=sec.querySelectorAll('.work.hidden').length>0;Array.prototype.slice.call(sec.querySelectorAll('.work')).forEach(function(w,i){w.classList.toggle('hidden',!hidden&&i>2)});btn.textContent=hidden?(ar?'إخفاء':'Show Less'):(ar?'عرض الكل':'View All')}})}
-      function runTests(){try{console.assert(parseLinks('https://a.com\n\ntext\r\nhttps://b.com').length===2,'parseLinks should return 2 URLs');console.assert(youtubeId('https://youtu.be/abc123?si=x')==='abc123','youtu.be ID parse failed');console.assert(youtubeId('https://www.youtube.com/watch?v=xyz987')==='xyz987','youtube watch ID parse failed');console.assert(niceHost('https://www.example.com/page')==='example.com','niceHost failed');console.log('Portfolio self-tests passed')}catch(e){console.error('Portfolio self-tests failed',e)}}
-      document.addEventListener('DOMContentLoaded',function(){qsa('.lang button').forEach(function(btn){btn.onclick=function(){applyLang(btn.getAttribute('data-lang'))}});applyLang('en');runTests();loadAllFiles().then(renderPortfolio)});
-    })();
-  </script>
-</body>
-</html>
+
+      function qs(selector){return document.querySelector(selector)}
+      function qsa(selector){return Array.prototype.slice.call(document.querySelectorAll(selector))}
+      function activeLang(){return document.documentElement.lang==='ar'?'ar':'en'}
+      function isArabic(){return activeLang()==='ar'}
+
+      function parseLinks(text){
+        return String(text||'').split(/
+?
+/).map(function(item){return item.trim()}).filter(function(item){return /^https?:\/\//i.test(item)})
+      }
+
+      function youtubeId(url){
+        url=String(url||'');
+        var match=url.match(/youtu\.be\/([^?&/]+)/i)||url.match(/[?&]v=([^?&]+)/i)||url.match(/youtube\.com\/shorts\/([^?&/]+)/i);
+        return match?match[1]:'';
+      }
+
+      function niceHost(url){
+        try{return new URL(url).hostname.replace(/^www\./,'')}catch(error){return url}
+      }
+
+      function fileTitle(url,index){
+        try{
+          var path=new URL(url).pathname.split('/').pop()||('Item '+(index+1));
+          return decodeURIComponent(path).replace(/\.[a-z0-9]+$/i,'').replace(/[-_]+/g,' ');
+        }catch(error){return 'Item '+(index+1)}
+      }
+
+      function cardImage(item,catId,index){
+        if(item.kind==='image'){return item.url}
+        var id=youtubeId(item.url);
+        if(id){return 'https://img.youtube.com/vi/'+id+'/hqdefault.jpg'}
+        return 'https://picsum.photos/seed/'+encodeURIComponent(catId+'-'+index)+'/900/700'
+      }
+
+      function loadTxt(url){
+        if(!url){return Promise.resolve([])}
+        return fetch(url,{cache:'no-store'}).then(function(response){return response.ok?response.text():''}).then(function(text){
+          return parseLinks(text).map(function(link){return {kind:'link',url:link,title:''}})
+        }).catch(function(){return []})
+      }
+
+      function loadGitHubFolder(url){
+        if(!url){return Promise.resolve([])}
+        return fetch(url,{cache:'no-store'}).then(function(response){return response.ok?response.json():[]}).then(function(items){
+          if(!Array.isArray(items)){return []}
+          return items.filter(function(item){
+            return item && item.type==='file' && item.download_url && /\.(webp|png|jpe?g|gif)$/i.test(item.name||'')
+          }).map(function(item){
+            return {kind:'image',url:item.download_url,title:(item.name||'').replace(/\.[a-z0-9]+$/i,'').replace(/[-_]+/g,' ')}
+          })
+        }).catch(function(){return []})
+      }
+
+      function loadSource(sourceKey){
+        if(!sourceKey || !SOURCES[sourceKey]){return Promise.resolve([])}
+        var source=SOURCES[sourceKey];
+        if(source.type==='folder'){return loadGitHubFolder(source.url)}
+        return loadTxt(source.url)
+      }
+
+      function loadAllSources(){
+        return Promise.all(categories.map(function(cat){
+          return loadSource(cat.source).then(function(items){portfolioData[cat.id]=items})
+        }))
+      }
+
+      function applyLang(nextLang){
+        document.documentElement.lang=nextLang;
+        document.documentElement.dir=nextLang==='ar'?'rtl':'ltr';
+        qsa('[data-en]').forEach(function(element){
+          element.textContent=element.getAttribute(nextLang==='ar'?'data-ar':'data-en')||element.textContent
+        });
+        qsa('.lang button').forEach(function(button){
+          button.classList.toggle('active',button.getAttribute('data-lang')===nextLang)
+        });
+        renderPortfolio();
+      }
+
+      function renderPortfolio(){
+        var chips=qs('#chips');
+        var wrap=qs('#portfolioWrap');
+        if(!chips||!wrap){return}
+        var ar=isArabic();
+        chips.innerHTML='<button class="chip active" data-filter="all" type="button"><span class="chipTitle">'+(ar?'كل الأعمال':'All Work')+'</span><span class="chipDesc">'+(ar?'عرض جميع فئات الأعمال المختارة في مكان واحد.':'Show all selected portfolio categories in one view.')+'</span></button>'+categories.map(function(cat){
+          return '<button class="chip" data-filter="'+cat.id+'" type="button"><span class="chipTitle">'+(ar?cat.ar:cat.en)+'</span><span class="chipDesc">'+(ar?cat.descAr:cat.descEn)+'</span></button>'
+        }).join('');
+
+        wrap.innerHTML=categories.map(function(cat){
+          var title=ar?cat.ar:cat.en;
+          var desc=ar?cat.descAr:cat.descEn;
+          var items=portfolioData[cat.id]||[];
+          var cards='';
+
+          if(items.length){
+            cards=items.map(function(item,index){
+              var isVideo=Boolean(youtubeId(item.url));
+              var label=item.kind==='image'?(ar?'عرض الصورة':'View Image'):(isVideo?(ar?'مشاهدة الفيديو':'Watch Video'):(ar?'فتح الرابط':'Open Link'));
+              var titleText=item.title || (title+' — '+String(index+1).padStart(2,'0'));
+              return '<a class="work '+(index>2?'hidden':'')+'" href="'+item.url+'" target="_blank" rel="noopener"><img src="'+cardImage(item,cat.id,index)+'" alt="'+titleText+'"><div class="workText"><small>'+title+'</small><h3>'+titleText+'</h3><p>'+niceHost(item.url)+' · '+label+'</p></div></a>'
+            }).join('')
+          }else{
+            cards='<article class="work"><img src="https://picsum.photos/seed/'+cat.id+'-empty/900/700" alt="'+title+'"><div class="workText"><small>'+title+'</small><h3>'+(ar?'سيتم الإضافة قريباً':'Coming Soon')+'</h3><p>'+(ar?'أضف الروابط أو الصور داخل المسار المناسب في GitHub.':'Add links or images to the related GitHub path.')+'</p></div></article>'
+          }
+
+          var showButton=items.length>3?'<button class="showMore" type="button">'+(ar?'عرض الكل':'View All')+'</button>':'';
+          return '<section class="portfolioCat" data-cat="'+cat.id+'"><div class="head"><div><h3>'+title+'</h3><p class="intro">'+desc+'</p></div></div><div class="portfolioGrid">'+cards+'</div>'+showButton+'</section>'
+        }).join('');
+
+        qsa('.chip').forEach(function(button){
+          button.onclick=function(){
+            qsa('.chip').forEach(function(item){item.classList.remove('active')});
+            button.classList.add('active');
+            var filter=button.getAttribute('data-filter');
+            qsa('.portfolioCat').forEach(function(section){
+              section.style.display=(filter==='all'||section.getAttribute('data-cat')===filter)?'':'none'
+            })
+          }
+        });
+
+        qsa('.showMore').forEach(function(button){
+          button.onclick=functi
