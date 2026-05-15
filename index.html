@@ -21,17 +21,1088 @@ section{padding:96px 0;border-top:1px solid rgba(226,255,238,.1)}.hero{min-heigh
 html[dir=rtl] .chip{text-align:right}html[dir=rtl] .timeline{padding-left:0;padding-right:28px}html[dir=rtl] .timeline:before{left:auto;right:8px}html[dir=rtl] .role:before{left:auto;right:-27px}
 @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-30px)}}@keyframes slide{0%,100%{opacity:.15}50%{opacity:.7}}@keyframes scanPortrait{0%,100%{transform:translateY(0);opacity:.15}50%{transform:translateY(440%);opacity:.75}}@keyframes codeDrop{0%{transform:translateY(-100%);opacity:0}18%,72%{opacity:.75}100%{transform:translateY(100%);opacity:0}}
 @media(max-width:1100px){.heroGrid,.contactBox{grid-template-columns:1fr}.grid4,.portfolioGrid,.grid3,.chips{grid-template-columns:repeat(2,1fr)}}@media(max-width:1000px){.links{display:none}.nav{align-items:flex-start;flex-wrap:wrap}.brand{width:100%;font-size:24px}.right{width:100%;justify-content:space-between}}@media(max-width:800px){section{padding:82px 0}.hero{padding-top:205px}.stats{grid-template-columns:repeat(3,1fr);gap:8px}.stat{padding:12px 10px}.stat strong{font-size:22px}.stat span{font-size:10px}.portrait{order:-1}.grid4,.grid3,.portfolioGrid,.profileMatrix,.chips{grid-template-columns:1fr}.tag{grid-template-columns:repeat(2,1fr);position:relative}.role{grid-template-columns:1fr;padding:18px}.head,.foot{flex-direction:column;align-items:flex-start}.snapshot,.snapshot:nth-child(2n),.snapshot:nth-child(n+3){border-right:0;border-bottom:1px solid var(--line)}.snapshot:last-child{border-bottom:0}}
+
+/* HM_CODEX_PORTFOLIO_NAV_PROGRESS_V2 */
+.scrollProgress{
+  position:fixed;left:0;top:0;height:4px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--green),#9dffbf);
+  box-shadow:0 0 24px rgba(61,190,114,.55);
+}
+.scrollRail{
+  position:fixed;right:14px;top:50%;transform:translateY(-50%);
+  width:3px;height:220px;border-radius:99px;z-index:70;
+  background:rgba(226,255,238,.09);overflow:hidden;
+}
+.scrollRail:before{
+  content:"";display:block;width:100%;height:var(--scroll,0%);
+  background:linear-gradient(180deg,var(--green),rgba(61,190,114,.2));
+  border-radius:99px;box-shadow:0 0 18px rgba(61,190,114,.55);
+}
+.links a.active{
+  color:var(--green)!important;
+  text-shadow:0 0 18px rgba(61,190,114,.22);
+}
+.links a{
+  position:relative;
+}
+.links a:after{
+  content:"";position:absolute;left:0;right:0;bottom:-10px;height:2px;
+  transform:scaleX(0);transform-origin:left;
+  background:var(--green);transition:.22s;border-radius:999px;
+}
+.links a.active:after,.links a:hover:after{transform:scaleX(1)}
+.portfolioCat .head h3,
+.portfolioCatTitle{
+  font-size:36px!important;line-height:1.05!important;color:var(--green)!important;
+  font-weight:900!important;letter-spacing:-.02em!important;
+}
+.work.websiteCard{
+  background:linear-gradient(135deg,rgba(61,190,114,.98),rgba(10,92,55,.94))!important;
+  border-color:rgba(61,190,114,.75)!important;
+}
+.work.websiteCard:after,.work.websiteCard img{display:none!important}
+.work.websiteCard .workText{
+  top:24px;bottom:24px;display:flex;flex-direction:column;justify-content:space-between;
+}
+.work.websiteCard .workText small,
+.work.websiteCard .workText h3,
+.work.websiteCard .workText p{color:#001b0c!important}
+.work.websiteCard .visitPill{
+  display:inline-flex;align-items:center;justify-content:center;width:max-content;
+  padding:10px 16px;border-radius:999px;background:#001b0c;color:var(--green);
+  font-weight:900;font-size:12px;text-transform:uppercase;margin-top:18px;
+}
+.backHomeLarge{
+  min-height:58px!important;padding:0 28px!important;font-size:14px!important;
+  border-radius:999px!important;box-shadow:0 18px 44px rgba(61,190,114,.22);
+}
+.portfolioHero{padding-top:160px!important;min-height:auto!important;border-top:0!important}
+.portfolioPageTitle{
+  font-size:clamp(44px,7vw,92px)!important;line-height:.96!important;
+  letter-spacing:-.04em!important;margin-top:18px!important;
+}
+@media(max-width:900px){
+  .scrollRail{display:none}
+  .portfolioHero{padding-top:190px!important}
+  .portfolioCat .head h3,.portfolioCatTitle{font-size:26px!important}
+}
+
+
+/* HM_UI_REFINEMENT_V3 */
+.scrollProgress{
+  position:fixed!important;
+  left:50%!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:18px!important;
+  transform:translateX(-50%)!important;
+  width:min(260px,42vw)!important;
+  height:6px!important;
+  border-radius:999px!important;
+  z-index:95!important;
+  background:rgba(226,255,238,.10)!important;
+  overflow:hidden!important;
+  box-shadow:0 0 0 1px rgba(226,255,238,.08),0 12px 28px rgba(0,0,0,.28)!important;
+}
+.scrollProgress:before{
+  content:""!important;
+  display:block!important;
+  width:var(--progress,0%)!important;
+  height:100%!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,var(--green),#a6ffc3)!important;
+  box-shadow:0 0 22px rgba(61,190,114,.65)!important;
+}
+.floatingActions{
+  position:fixed!important;
+  right:20px!important;
+  left:auto!important;
+  bottom:70px!important;
+  z-index:100!important;
+  display:grid!important;
+  gap:10px!important;
+}
+.waFloat{display:none!important}
+.previewPortfolioGrid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+  margin-top:34px;
+}
+.previewCard{
+  position:relative;
+  min-height:230px;
+  padding:22px;
+  border-radius:28px;
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(61,190,114,.075),rgba(255,255,255,.018));
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:.28s ease;
+}
+.previewCard:before,
+.previewCard:after{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border-radius:24px;
+  border:1px solid rgba(61,190,114,.18);
+  background:rgba(61,190,114,.045);
+  z-index:0;
+  transform:translate(13px,-13px) rotate(2deg);
+}
+.previewCard:after{
+  transform:translate(26px,-26px) rotate(4deg);
+  opacity:.45;
+}
+.previewCard:hover{
+  transform:translateY(-6px);
+  border-color:rgba(61,190,114,.48);
+  box-shadow:0 24px 70px rgba(0,0,0,.32);
+}
+.previewCard > *{position:relative;z-index:2}
+.previewIndex{
+  display:inline-flex;
+  width:38px;
+  height:38px;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  background:rgba(61,190,114,.15);
+  color:var(--green);
+  font-weight:900;
+  margin-bottom:18px;
+}
+.previewCard h3{
+  font-size:24px;
+  line-height:1.08;
+  color:var(--green);
+  margin-bottom:10px;
+  letter-spacing:-.02em;
+}
+.previewCard p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+.previewCard span:last-child{
+  color:var(--text);
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-top:22px;
+}
+.previewPortfolioCta{
+  display:flex;
+  justify-content:center;
+  margin-top:28px;
+}
+@media(max-width:1100px){
+  .previewPortfolioGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .scrollProgress{bottom:14px!important;width:min(220px,52vw)!important}
+  .floatingActions{right:14px!important;bottom:58px!important}
+  .previewPortfolioGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .previewCard{min-height:205px;border-radius:22px;padding:16px}
+  .previewCard h3{font-size:17px}
+  .previewCard p{font-size:11.5px}
+  .previewIndex{width:32px;height:32px;margin-bottom:12px}
+}
+
+
+/* HM_PROFILE_REFINEMENT_V4 */
+.brand small,
+.heroTitle{
+  font-weight:500!important;
+  font-size:13px!important;
+  line-height:1.35!important;
+  letter-spacing:0!important;
+  color:rgba(238,248,242,.72)!important;
+}
+.heroTitle{font-size:16px!important;max-width:680px!important}
+.portraitCode{display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;overflow:hidden!important}
+
+.revealCard{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .65s ease,transform .65s ease,border-color .35s ease,box-shadow .35s ease;
+}
+.revealCard.isVisible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.profileMatrix{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:16px!important;
+  border:0!important;
+  background:transparent!important;
+  max-width:none!important;
+  overflow:visible!important;
+}
+.snapshot,
+.snapshotCell{
+  min-height:250px!important;
+  border:1px solid var(--line)!important;
+  border-radius:26px!important;
+  padding:24px 22px!important;
+  background:linear-gradient(180deg,rgba(61,190,114,.07),rgba(255,255,255,.018))!important;
+  position:relative!important;
+  overflow:hidden!important;
+}
+.snapshot:before,
+.snapshotCell:before{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;
+  top:0!important;
+  right:0!important;
+  height:3px!important;
+  width:auto!important;
+  background:linear-gradient(90deg,var(--green),transparent)!important;
+  border-radius:0!important;
+}
+.snapshot:after,
+.snapshotCell:after{
+  content:""!important;
+  position:absolute!important;
+  right:-48px!important;
+  top:-48px!important;
+  width:130px!important;
+  height:130px!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle,rgba(61,190,114,.13),transparent 70%)!important;
+}
+.snapshotIcon,
+.profileIcon{
+  width:42px!important;
+  height:42px!important;
+  border-radius:14px!important;
+  display:grid!important;
+  place-items:center!important;
+  color:var(--green)!important;
+  background:rgba(61,190,114,.1)!important;
+  border:1px solid rgba(61,190,114,.22)!important;
+  margin-bottom:18px!important;
+  position:relative!important;
+  right:auto!important;
+  top:auto!important;
+}
+.snapshotIcon svg,
+.profileIcon svg{
+  width:23px!important;
+  height:23px!important;
+  fill:none!important;
+  stroke:currentColor!important;
+  stroke-width:1.8!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+.snapshot .label,
+.snapshotCell .label{
+  margin:0 0 12px 0!important;
+  color:var(--green)!important;
+  font-size:11px!important;
+  letter-spacing:.06em!important;
+  text-transform:uppercase!important;
+  font-weight:900!important;
+}
+.snapshot h3,
+.snapshotCell h3{
+  font-size:19px!important;
+  line-height:1.15!important;
+  margin:0 0 8px!important;
+  max-width:100%!important;
+  letter-spacing:-.015em!important;
+}
+.snapshot p,
+.snapshotCell p{
+  font-size:13px!important;
+  line-height:1.45!important;
+  color:var(--muted)!important;
+  margin:0 0 12px!important;
+}
+.educationCard,
+.certCard{
+  border-color:rgba(61,190,114,.36)!important;
+  box-shadow:0 20px 70px rgba(61,190,114,.06)!important;
+}
+.educationCard h3,
+.certCard h3{
+  color:var(--text)!important;
+}
+.profileMiniList{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+.profileMiniItem{
+  padding:10px 12px;
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(226,255,238,.08);
+}
+.profileMiniItem strong{
+  display:block;
+  color:var(--text);
+  font-size:13px;
+  line-height:1.25;
+}
+.profileMiniItem span{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:3px;
+}
+@media(max-width:1100px){
+  .profileMatrix{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:800px){
+  .brand small{font-size:10px!important;font-weight:500!important}
+  .heroTitle{font-size:14px!important;font-weight:500!important}
+  .profileMatrix{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  .snapshot,.snapshotCell{min-height:220px!important;border-radius:20px!important;padding:16px 14px!important}
+  .snapshotIcon,.profileIcon{width:36px!important;height:36px!important;border-radius:12px!important;margin-bottom:12px!important}
+  .snapshotIcon svg,.profileIcon svg{width:20px!important;height:20px!important}
+  .snapshot .label,.snapshotCell .label{font-size:9.5px!important;margin-bottom:8px!important}
+  .snapshot h3,.snapshotCell h3{font-size:14px!important;line-height:1.15!important}
+  .snapshot p,.snapshotCell p{font-size:10.5px!important;line-height:1.35!important}
+  .profileMiniItem{padding:8px!important}
+  .profileMiniItem strong{font-size:11px!important}
+  .profileMiniItem span{font-size:10px!important}
+}
+
+
+/* HM_EDUCATION_CERTS_REWORK_V5 */
+.brand small,
+.heroTitle{
+  font-weight:500!important;
+  font-size:13px!important;
+  line-height:1.35!important;
+  letter-spacing:0!important;
+  color:rgba(238,248,242,.72)!important;
+}
+.heroTitle{font-size:16px!important;max-width:680px!important}
+.portraitCode{display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;overflow:hidden!important}
+
+.revealCard,
+.card,
+.role,
+.previewCard,
+.work,
+.eduCertCard,
+.snapshot{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .65s ease,transform .65s ease,border-color .35s ease,box-shadow .35s ease;
+}
+.revealCard.isVisible,
+.card.isVisible,
+.role.isVisible,
+.previewCard.isVisible,
+.work.isVisible,
+.eduCertCard.isVisible,
+.snapshot.isVisible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.profileMatrix{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:18px!important;
+  border:0!important;
+  background:transparent!important;
+  max-width:none!important;
+  overflow:visible!important;
+}
+.snapshot,
+.snapshotCell{
+  min-height:230px!important;
+  border:1px solid var(--line)!important;
+  border-radius:26px!important;
+  padding:26px!important;
+  background:linear-gradient(180deg,rgba(61,190,114,.055),rgba(255,255,255,.018))!important;
+  position:relative!important;
+  overflow:hidden!important;
+}
+.snapshot:before,
+.snapshotCell:before{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;
+  top:0!important;
+  right:0!important;
+  height:3px!important;
+  width:auto!important;
+  background:linear-gradient(90deg,var(--green),transparent)!important;
+  border-radius:0!important;
+}
+.snapshot h3,
+.snapshotCell h3{
+  font-size:22px!important;
+  line-height:1.13!important;
+  margin:0 0 10px!important;
+  letter-spacing:-.02em!important;
+}
+.snapshot p,
+.snapshotCell p{
+  font-size:14px!important;
+  line-height:1.55!important;
+  color:var(--muted)!important;
+}
+.snapshot .label,
+.snapshotCell .label{
+  color:var(--green)!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  letter-spacing:.06em!important;
+  margin-bottom:14px!important;
+  text-transform:uppercase!important;
+}
+
+.eduCertSection{
+  padding:96px 0;
+  border-top:1px solid rgba(226,255,238,.10);
+  background:linear-gradient(180deg,rgba(61,190,114,.04),rgba(255,255,255,.01));
+}
+.eduCertGrid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:22px;
+  margin-top:32px;
+}
+.eduCertCard{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(61,190,114,.26);
+  border-radius:30px;
+  padding:30px;
+  min-height:330px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(61,190,114,.18),transparent 35%),
+    linear-gradient(180deg,rgba(61,190,114,.075),rgba(255,255,255,.018));
+}
+.eduCertCard:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(61,190,114,.08),transparent 42%);
+  pointer-events:none;
+}
+.eduCertCard > *{position:relative;z-index:2}
+.eduCertIcon{
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  color:var(--green);
+  background:rgba(61,190,114,.12);
+  border:1px solid rgba(61,190,114,.28);
+  margin-bottom:22px;
+}
+.eduCertIcon svg{
+  width:29px;
+  height:29px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.eduCertCard .label{
+  color:var(--green);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.eduCertCard h3{
+  font-size:32px;
+  line-height:1.05;
+  letter-spacing:-.025em;
+  margin-bottom:18px;
+}
+.eduCertList{
+  display:grid;
+  gap:13px;
+  margin-top:20px;
+}
+.eduCertItem{
+  display:grid;
+  gap:4px;
+  padding:15px 16px;
+  border-radius:18px;
+  border:1px solid rgba(226,255,238,.10);
+  background:rgba(255,255,255,.028);
+}
+.eduCertItem strong{
+  font-size:16px;
+  line-height:1.25;
+  color:var(--text);
+}
+.eduCertItem span{
+  font-size:13px;
+  color:var(--muted);
+}
+.eduCertCard.featured{
+  border-color:rgba(61,190,114,.46);
+  box-shadow:0 28px 80px rgba(61,190,114,.075);
+}
+.eduCertNote{
+  margin-top:18px;
+  color:var(--muted);
+  font-size:13px;
+  max-width:720px;
+}
+@media(max-width:1000px){
+  .eduCertGrid{grid-template-columns:1fr}
+}
+@media(max-width:800px){
+  .brand small{font-size:10px!important;font-weight:500!important}
+  .heroTitle{font-size:14px!important;font-weight:500!important}
+  .profileMatrix{grid-template-columns:1fr!important;gap:12px!important}
+  .snapshot,.snapshotCell{min-height:auto!important;padding:20px!important;border-radius:22px!important}
+  .snapshot h3,.snapshotCell h3{font-size:19px!important}
+  .snapshot p,.snapshotCell p{font-size:12px!important}
+  .eduCertSection{padding:82px 0}
+  .eduCertCard{min-height:auto;padding:22px;border-radius:24px}
+  .eduCertCard h3{font-size:25px}
+  .eduCertItem strong{font-size:14px}
+  .eduCertItem span{font-size:12px}
+}
+
+
+/* HM_HERO_EDUCATION_REWORK_V6 */
+.heroRoleCard{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  max-width:780px;
+  margin-top:24px;
+}
+.heroRoleCard>div{
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:16px 18px;
+  background:linear-gradient(180deg,rgba(61,190,114,.065),rgba(255,255,255,.018));
+}
+.heroRoleCard span{
+  display:block;
+  color:var(--green);
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin-bottom:6px;
+}
+.heroRoleCard strong{
+  display:block;
+  font-size:17px;
+  line-height:1.18;
+  letter-spacing:-.01em;
+}
+.heroRoleCard small{
+  display:block;
+  margin-top:6px;
+  color:var(--muted);
+  font-size:12px;
+}
+.eduCertSection{
+  padding:96px 0;
+  border-top:1px solid rgba(226,255,238,.10);
+  background:linear-gradient(180deg,rgba(61,190,114,.045),rgba(255,255,255,.012));
+}
+.eduSplit{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:26px;
+  margin-top:34px;
+}
+.eduPanel{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(61,190,114,.30);
+  border-radius:34px;
+  padding:34px;
+  min-height:310px;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(61,190,114,.18),transparent 34%),
+    linear-gradient(180deg,rgba(61,190,114,.075),rgba(255,255,255,.018));
+}
+.eduPanel:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(61,190,114,.08),transparent 48%);
+  pointer-events:none;
+}
+.eduPanel>*{position:relative;z-index:2}
+.eduPanelHeader{
+  display:flex;
+  align-items:flex-start;
+  gap:20px;
+  margin-bottom:28px;
+}
+.eduCertIcon{
+  width:66px!important;
+  height:66px!important;
+  border-radius:22px!important;
+  display:grid!important;
+  place-items:center!important;
+  color:var(--green)!important;
+  background:rgba(61,190,114,.13)!important;
+  border:1px solid rgba(61,190,114,.28)!important;
+  flex:0 0 auto;
+}
+.eduCertIcon svg{
+  width:35px!important;
+  height:35px!important;
+  fill:none!important;
+  stroke:currentColor!important;
+  stroke-width:1.8!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+.eduPanel .label{
+  display:block;
+  color:var(--green);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.eduPanel h3{
+  font-size:42px;
+  line-height:.98;
+  letter-spacing:-.035em;
+  margin:0;
+}
+.eduLargeList{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.eduLargeItem{
+  min-height:112px;
+  padding:20px 22px;
+  border-radius:22px;
+  border:1px solid rgba(226,255,238,.11);
+  background:rgba(255,255,255,.03);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.eduLargeItem strong{
+  font-size:20px;
+  line-height:1.2;
+  color:var(--text);
+}
+.eduLargeItem span{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:14px;
+}
+.eduEducation{border-color:rgba(61,190,114,.42)}
+.eduCerts{border-color:rgba(61,190,114,.32)}
+.floatingActions{
+  right:20px!important;
+  left:auto!important;
+  bottom:70px!important;
+}
+body .floatingActions:nth-of-type(n+2){display:none!important}
+.waFloat{display:none!important}
+@media(max-width:900px){
+  .heroRoleCard{grid-template-columns:1fr;gap:10px}
+  .eduPanel{padding:24px;border-radius:26px}
+  .eduPanelHeader{gap:14px;margin-bottom:20px}
+  .eduCertIcon{width:52px!important;height:52px!important;border-radius:18px!important}
+  .eduCertIcon svg{width:28px!important;height:28px!important}
+  .eduPanel h3{font-size:30px}
+  .eduLargeList{grid-template-columns:1fr;gap:12px}
+  .eduLargeItem{min-height:auto;padding:16px}
+  .eduLargeItem strong{font-size:16px}
+  .eduLargeItem span{font-size:12px}
+}
+
+
+/* HM_HERO_LAYOUT_EXPERIENCE_COMPANY_V7 */
+.heroRoleCard{
+  grid-column:1/-1!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:14px!important;
+  max-width:none!important;
+  width:100%!important;
+  margin-top:26px!important;
+  order:8!important;
+}
+.heroRoleCard>div{
+  min-height:104px!important;
+  border:1px solid var(--line)!important;
+  border-radius:22px!important;
+  padding:18px 20px!important;
+  background:linear-gradient(180deg,rgba(61,190,114,.065),rgba(255,255,255,.018))!important;
+}
+.hero .actions{order:5!important}
+.hero .stats{
+  order:9!important;
+  grid-column:1/-1!important;
+  max-width:640px!important;
+  margin-top:22px!important;
+}
+.heroGrid>div:first-child{
+  display:flex!important;
+  flex-direction:column!important;
+}
+.companyBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  width:max-content;
+  color:var(--green);
+  font-weight:900;
+  font-size:14px;
+  margin-top:6px;
+  padding:7px 12px;
+  border-radius:999px;
+  background:rgba(61,190,114,.09);
+  border:1px solid rgba(61,190,114,.22);
+}
+.companyBadge:before{
+  content:"";
+  width:16px;
+  height:16px;
+  flex:0 0 auto;
+  background:currentColor;
+  mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M3 21V7l9-4 9 4v14h-6v-7H9v7H3Zm2-2h2v-7h10v7h2V8.3l-7-3.1-7 3.1V19Zm5-9h4V8h-4v2Z"/></svg>') center/contain no-repeat;
+}
+.role strong:not(.companyBadge){
+  color:var(--muted);
+  font-weight:700;
+}
+.floatingActions{
+  position:fixed!important;
+  right:20px!important;
+  left:auto!important;
+  bottom:70px!important;
+  z-index:100!important;
+  display:grid!important;
+  gap:10px!important;
+}
+body .floatingActions:not(:last-of-type){display:none!important}
+.waFloat{display:none!important}
+@media(max-width:900px){
+  .heroRoleCard{grid-template-columns:1fr!important;gap:10px!important}
+  .hero .stats{max-width:none!important}
+  .companyBadge{font-size:12px;padding:6px 10px}
+}
+
+
+/* HM_TYPOGRAPHY_GRADIENT_REFINEMENT_V8 */
+
+/* Softer company styling in Experience */
+.companyBadge{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  width:max-content!important;
+  color:rgba(238,248,242,.76)!important;
+  font-weight:700!important;
+  font-size:14px!important;
+  margin-top:6px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.companyBadge:before{
+  content:""!important;
+  width:15px!important;
+  height:15px!important;
+  flex:0 0 auto!important;
+  color:var(--green)!important;
+  background:currentColor!important;
+  opacity:.78!important;
+  mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M3 21V7l9-4 9 4v14h-6v-7H9v7H3Zm2-2h2v-7h10v7h2V8.3l-7-3.1-7 3.1V19Zm5-9h4V8h-4v2Z"/></svg>') center/contain no-repeat!important;
+}
+
+/* Premium animated gradient for major titles */
+h1,
+.title,
+.portfolioPageTitle,
+.portfolioCatTitle,
+.eduPanel h3{
+  background:linear-gradient(110deg,#eef8f2 0%,#eef8f2 28%,#3DBE72 48%,#b8ffd0 58%,#eef8f2 76%,#eef8f2 100%)!important;
+  background-size:260% 100%!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  color:transparent!important;
+  animation:hmTitleGradient 8s ease-in-out infinite!important;
+}
+.eyebrow,
+.label,
+.previewIndex,
+.chip.active .chipTitle{
+  background:linear-gradient(100deg,var(--green),#a6ffc3,var(--green))!important;
+  background-size:220% 100%!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  color:transparent!important;
+  animation:hmTitleGradient 7s ease-in-out infinite!important;
+}
+@keyframes hmTitleGradient{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+/* keep small title readability */
+.brand span{
+  background:none!important;
+  color:var(--text)!important;
+  -webkit-text-fill-color:var(--text)!important;
+}
+.brand small,
+.heroTitle,
+.stat strong,
+.workText h3,
+.serviceTop h3,
+.card h3,
+.role h3,
+.eduLargeItem strong,
+.profileMiniItem strong{
+  background:none!important;
+  color:inherit!important;
+  -webkit-text-fill-color:inherit!important;
+  animation:none!important;
+}
+
+@media(max-width:800px){
+  .companyBadge{font-size:12px!important}
+  .companyBadge:before{width:13px!important;height:13px!important}
+}
+
+
+/* HM_STRONG_TEXT_GRADIENT_V9 */
+
+/* Strong visible green light/dark animated text effect */
+h1,
+.title,
+.portfolioPageTitle,
+.portfolioCatTitle,
+.eduPanel h3,
+.previewCard h3{
+  background:
+    linear-gradient(
+      105deg,
+      #eef8f2 0%,
+      #eef8f2 18%,
+      #1bcf7a 34%,
+      #baffd2 45%,
+      #0a8f55 56%,
+      #3DBE72 66%,
+      #eef8f2 82%,
+      #eef8f2 100%
+    )!important;
+  background-size:320% 100%!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+  color:transparent!important;
+  animation:hmStrongTextGradient 4.2s ease-in-out infinite!important;
+  text-shadow:0 0 28px rgba(61,190,114,.10)!important;
+}
+.eyebrow,
+.label,
+.previewIndex,
+.chip.active .chipTitle{
+  background:
+    linear-gradient(
+      100deg,
+      #00c875 0%,
+      #baffd2 35%,
+      #087a49 62%,
+      #3DBE72 100%
+    )!important;
+  background-size:260% 100%!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+  color:transparent!important;
+  animation:hmStrongTextGradient 3.8s ease-in-out infinite!important;
+}
+@keyframes hmStrongTextGradient{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* keep regular body/card text readable */
+.brand span,
+.brand small,
+.heroTitle,
+.stat strong,
+.stat span,
+.workText h3,
+.workText p,
+.serviceTop h3,
+.card h3,
+.card p,
+.role h3,
+.eduLargeItem strong,
+.eduLargeItem span,
+.profileMiniItem strong,
+.profileMiniItem span,
+.heroRoleCard strong,
+.heroRoleCard small{
+  background:none!important;
+  color:inherit!important;
+  -webkit-text-fill-color:inherit!important;
+  animation:none!important;
+  text-shadow:none!important;
+}
+
+/* stronger hover shimmer for section cards */
+.previewCard:hover h3,
+.eduPanel:hover h3{
+  animation-duration:2.2s!important;
+}
+
 </style>
 </head>
+
+
+
+
+<!-- HM_STRONG_TEXT_GRADIENT_V9 -->
 <body>
+
+<div class="scrollProgress" id="scrollProgress"></div>
+<div class="scrollRail" id="scrollRail" aria-hidden="true"></div>
 <div class="bgFx"><span class="orb o1"></span><span class="orb o2"></span><span class="line l1"></span><span class="line l2"></span></div>
-<nav><div class="container nav"><a class="brand" href="#top"><span data-en="Hussein Mlhem" data-ar="حسين ملحم">Hussein Mlhem</span><small data-en="Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing" data-ar="Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing">Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing</small></a><div class="links"><a href="#profile" data-en="Profile" data-ar="الملف">Profile</a><a href="#tools" data-en="Tools" data-ar="الأدوات">Tools</a><a href="#experience" data-en="Experience" data-ar="الخبرات">Experience</a><a href="portfolio.html" data-en="Portfolio" data-ar="الأعمال">Portfolio</a><a href="#services" data-en="Services" data-ar="الخدمات">Services</a><a href="#contact" data-en="Contact" data-ar="التواصل">Contact</a></div><div class="right"><div class="lang"><button class="active" data-lang="en" type="button">EN</button><button data-lang="ar" type="button">عربي</button></div><a class="cv" href="https://raw.githubusercontent.com/husseinmlhem/H2/main/assets/HusseinMlhemCV.pdf" target="_blank" data-en="Download CV" data-ar="تحميل السيرة">Download CV</a></div></div></nav>
+<nav><div class="container nav"><a class="brand" href="#top"><span data-en="Hussein Mlhem" data-ar="حسين ملحم">Hussein Mlhem</span><small data-en="Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing" data-ar="Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing">Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing</small></a><div class="links"><a href="#education" data-en="Education" data-ar="الدراسة">Education</a><a href="#tools" data-en="Tools" data-ar="الأدوات">Tools</a><a href="#experience" data-en="Experience" data-ar="الخبرات">Experience</a><a href="portfolio.html" data-en="Portfolio" data-ar="الأعمال">Portfolio</a><a href="#services" data-en="Services" data-ar="الخدمات">Services</a><a href="#contact" data-en="Contact" data-ar="التواصل">Contact</a></div><div class="right"><div class="lang"><button class="active" data-lang="en" type="button">EN</button><button data-lang="ar" type="button">عربي</button></div><a class="cv" href="https://raw.githubusercontent.com/husseinmlhem/H2/main/assets/HusseinMlhemCV.pdf" target="_blank" data-en="Download CV" data-ar="تحميل السيرة">Download CV</a></div></div></nav>
 <main id="top">
-<section class="hero"><div class="container heroGrid"><div><div class="eyebrow" data-en="UAE + Remote" data-ar="الإمارات + ريموت">UAE + Remote</div><h1 data-en="Hussein Mlhem" data-ar="حسين ملحم">Hussein Mlhem</h1><div class="heroTitle" data-en="Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing" data-ar="Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing">Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing</div><p data-en="Visual content, motion, AI workflows, websites, campaigns, and automation systems." data-ar="محتوى بصري، موشن، AI، مواقع، حملات، وأنظمة أتمتة.">Visual content, motion, AI workflows, websites, campaigns, and automation systems.</p><div class="actions"><a class="btn primary" href="#portfolio" data-en="View Work" data-ar="عرض الأعمال">View Work</a><a class="btn outline" href="#services" data-en="Services" data-ar="الخدمات">Services</a><a class="btn outline" href="https://www.linkedin.com/in/hussein-mlhem/" target="_blank">LinkedIn</a></div><div class="stats"><div class="stat"><strong>9+</strong><span data-en="Years" data-ar="سنوات">Years</span></div><div class="stat"><strong>1000+</strong><span data-en="Projects & Assets" data-ar="مشاريع وأصول">Projects & Assets</span></div><div class="stat"><strong>500+</strong><span data-en="Freelance Jobs" data-ar="مشروع فريلانس">Freelance Jobs</span></div></div></div><div class="portrait"><div class="portraitCode"><span>&lt;visual-content /&gt;</span><span>ai.workflow=true</span><span>motion.render()</span></div><img src="https://raw.githubusercontent.com/husseinmlhem/cv/main/me.png" alt="Hussein Mlhem"><div class="tag"><div><small data-en="Born" data-ar="مواليد">Born</small><span>01-01-1995</span></div><div><small data-en="Status" data-ar="الحالة">Status</small><span data-en="Married" data-ar="متزوج">Married</span></div><div><small data-en="Languages" data-ar="اللغات">Languages</small><span data-en="Arabic + English" data-ar="عربي + إنجليزي">Arabic + English</span></div><div><small data-en="Availability" data-ar="التوفر">Availability</small><span data-en="UAE + Remote" data-ar="الإمارات + ريموت">UAE + Remote</span></div></div></div></div></section>
-<section class="surface" id="profile"><div class="container"><div class="head"><div><div class="eyebrow" data-en="Profile" data-ar="الملف المهني">Profile</div><h2 class="title" data-en="Professional Snapshot" data-ar="ملخص احترافي">Professional Snapshot</h2></div></div><div class="profileMatrix"><div class="snapshot"><span class="label" data-en="Current Role" data-ar="الدور الحالي">Current Role</span><h3 data-en="Marketing Operations Executive / Multimedia Lead" data-ar="تنفيذي عمليات تسويق / قائد وسائط متعددة">Marketing Operations Executive / Multimedia Lead</h3><p>Baynunah Official — Ma Hawa. Campaigns, product visuals, videos, presentations, brochures, AI visuals, and event materials.</p></div><div class="snapshot"><span class="label" data-en="Education" data-ar="الدراسة">Education</span><h3 data-en="Bachelor's Degree in Software Engineering" data-ar="بكالوريوس هندسة البرمجيات">Bachelor's Degree in Software Engineering</h3><p data-en="Al-Baath University — 2012 to 2017." data-ar="جامعة البعث — 2012 إلى 2017.">Al-Baath University — 2012 to 2017.</p><h3 data-en="Master’s Program — Web Science" data-ar="برنامج الماجستير — علوم الويب">Master’s Program — Web Science</h3><p data-en="Started in 2018 — incomplete degree." data-ar="بدأ عام 2018 — غير مكتمل.">Started in 2018 — incomplete degree.</p></div><div class="snapshot"><span class="label" data-en="Certifications" data-ar="الشهادات">Certifications</span><h3>Digital Marketing Course with AI & ChatGPT</h3><p>SEO International, UAE.</p><h3>Environmental, Health and Safety Certifications</h3><p>Blue Ocean Corporation.</p></div><div class="snapshot"><span class="label" data-en="Freelance Proof" data-ar="إثبات فريلانس">Freelance Proof</span><h3>Upwork Top Rated Freelancer</h3><p data-en="500+ projects across motion, editing, animation, design, explainers, and presentations." data-ar="أكثر من 500 مشروع في الموشن والمونتاج والتصميم والعروض.">500+ projects across motion, editing, animation, design, explainers, and presentations.</p></div></div></div></section>
+<section class="hero"><div class="container heroGrid"><div><div class="eyebrow" data-en="UAE + Remote" data-ar="الإمارات + ريموت">UAE + Remote</div><h1 data-en="Hussein Mlhem" data-ar="حسين ملحم">Hussein Mlhem</h1><div class="heroTitle" data-en="Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing" data-ar="Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing">Senior Multimedia Designer | AI-Powered Visual Content | Digital Marketing</div><p data-en="Visual content, motion, AI workflows, websites, campaigns, and automation systems." data-ar="محتوى بصري، موشن، AI، مواقع، حملات، وأنظمة أتمتة.">Visual content, motion, AI workflows, websites, campaigns, and automation systems.</p><div class="heroRoleCard revealCard">
+  <div>
+    <span data-en="Current Role" data-ar="الدور الحالي">Current Role</span>
+    <strong data-en="Marketing Operations Executive / Multimedia Lead" data-ar="تنفيذي عمليات تسويق / قائد وسائط متعددة">Marketing Operations Executive / Multimedia Lead</strong>
+    <small>Baynunah Official — Ma Hawa</small>
+  </div>
+  <div>
+    <span data-en="Freelance Proof" data-ar="إثبات فريلانس">Freelance Proof</span>
+    <strong>Upwork Top Rated</strong>
+    <small data-en="500+ freelance projects" data-ar="أكثر من 500 مشروع فريلانس">500+ freelance projects</small>
+  </div>
+</div><div class="actions"><a class="btn primary" href="#portfolio" data-en="View Work" data-ar="عرض الأعمال">View Work</a><a class="btn outline" href="#services" data-en="Services" data-ar="الخدمات">Services</a><a class="btn outline" href="https://www.linkedin.com/in/hussein-mlhem/" target="_blank">LinkedIn</a></div><div class="stats"><div class="stat"><strong>9+</strong><span data-en="Years" data-ar="سنوات">Years</span></div><div class="stat"><strong>1000+</strong><span data-en="Projects & Assets" data-ar="مشاريع وأصول">Projects & Assets</span></div><div class="stat"><strong>500+</strong><span data-en="Freelance Jobs" data-ar="مشروع فريلانس">Freelance Jobs</span></div></div></div><div class="portrait"><img src="https://raw.githubusercontent.com/husseinmlhem/cv/main/me.png" alt="Hussein Mlhem"><div class="tag"><div><small data-en="Born" data-ar="مواليد">Born</small><span>01-01-1995</span></div><div><small data-en="Status" data-ar="الحالة">Status</small><span data-en="Married" data-ar="متزوج">Married</span></div><div><small data-en="Languages" data-ar="اللغات">Languages</small><span data-en="Arabic + English" data-ar="عربي + إنجليزي">Arabic + English</span></div><div><small data-en="Availability" data-ar="التوفر">Availability</small><span data-en="UAE + Remote" data-ar="الإمارات + ريموت">UAE + Remote</span></div></div></div></div></section>
+<section class="eduCertSection" id="education">
+  <div class="container">
+    <div class="head eduHead">
+      <div>
+        <div class="eyebrow" data-en="Education & Certifications" data-ar="الدراسة والشهادات">Education & Certifications</div>
+        <h2 class="title" data-en="Education and certifications." data-ar="الدراسة والشهادات.">Education and certifications.</h2>
+        <p class="intro" data-en="Separated clearly for recruiters: academic background first, verified certificates second." data-ar="قسم مستقل وواضح لمسؤولي التوظيف: الدراسة أولاً، ثم الشهادات الموثقة.">Separated clearly for recruiters: academic background first, verified certificates second.</p>
+      </div>
+    </div>
+
+    <div class="eduSplit">
+      <article class="eduPanel eduEducation revealCard">
+        <div class="eduPanelHeader">
+          <div class="eduCertIcon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 8l9-4 9 4-9 4-9-4Z"/><path d="M7 10v5c0 1.7 2.2 3 5 3s5-1.3 5-3v-5"/><path d="M21 8v6"/></svg>
+          </div>
+          <div>
+            <span class="label" data-en="Education" data-ar="الدراسة">Education</span>
+            <h3 data-en="Academic Background" data-ar="الخلفية الأكاديمية">Academic Background</h3>
+          </div>
+        </div>
+
+        <div class="eduLargeList">
+          <div class="eduLargeItem">
+            <strong data-en="Bachelor's Degree in Software Engineering" data-ar="بكالوريوس هندسة البرمجيات">Bachelor's Degree in Software Engineering</strong>
+            <span data-en="Al-Baath University · 2012–2017" data-ar="جامعة البعث · 2012–2017">Al-Baath University · 2012–2017</span>
+          </div>
+          <div class="eduLargeItem">
+            <strong data-en="Master’s Program — Web Science" data-ar="برنامج ماجستير — علوم الويب">Master’s Program — Web Science</strong>
+            <span data-en="Started in 2018 · Incomplete degree" data-ar="بدأ عام 2018 · غير مكتمل">Started in 2018 · Incomplete degree</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="eduPanel eduCerts revealCard">
+        <div class="eduPanelHeader">
+          <div class="eduCertIcon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-3-6 3V3Z"/><path d="M9 8h6"/><path d="M9 12h4"/></svg>
+          </div>
+          <div>
+            <span class="label" data-en="Certifications" data-ar="الشهادات">Certifications</span>
+            <h3 data-en="Verified Training" data-ar="تدريب موثق">Verified Training</h3>
+          </div>
+        </div>
+
+        <div class="eduLargeList">
+          <div class="eduLargeItem">
+            <strong>Digital Marketing Course with AI & ChatGPT</strong>
+            <span>SEO International, UAE · Issued Nov 2024</span>
+          </div>
+          <div class="eduLargeItem">
+            <strong>Environmental, Health and Safety Certifications</strong>
+            <span>Blue Ocean Corporation · Issued Jul 2025</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 <section id="tools"><div class="container"><div class="head"><div><div class="eyebrow" data-en="Tools" data-ar="الأدوات">Tools</div><h2 class="title" data-en="Tools I use." data-ar="الأدوات التي أستخدمها.">Tools I use.</h2></div></div><div class="grid4"><article class="card"><h3 data-en="Creative" data-ar="الإبداع">Creative</h3><p>After Effects, Premiere Pro, Photoshop, Illustrator, XD, Canva, PowerPoint.</p></article><article class="card"><h3 data-en="AI Creative" data-ar="الذكاء الصناعي">AI Creative</h3><p>ChatGPT, Midjourney, Runway, Kling, Pika, Freepik AI, Firefly, Leonardo AI, Gemini, ElevenLabs.</p></article><article class="card"><h3 data-en="Marketing" data-ar="التسويق">Marketing</h3><p>Meta Ads, TikTok Ads, social platforms, campaign planning, content systems.</p></article><article class="card"><h3 data-en="Web & Automation" data-ar="الويب والأتمتة">Web & Automation</h3><p>Shopify, Wix, WordPress, HTML, CSS, JavaScript, PHP, AI agents, workflow automation.</p></article></div></div></section>
-<section class="surface" id="experience"><div class="container"><div class="head"><div><div class="eyebrow" data-en="Experience" data-ar="الخبرات">Experience</div><h2 class="title" data-en="Professional Experience" data-ar="الخبرات العملية">Professional Experience</h2></div></div><div class="timeline"><article class="role"><div class="date">May 2024 — Present</div><div><h3>Marketing Operations Executive / Multimedia Lead</h3><strong>Baynunah Official — Ma Hawa</strong><p>Visual content, campaigns, product visuals, AI concepts, presentations, and event materials.</p><div class="award">🏆 Employee of the Year — Dec 2024</div></div></article><article class="role"><div class="date">Jun 2023 — May 2024</div><div><h3>Senior Video Editor & Motion Designer</h3><strong>Super Future Technology</strong><p>Motion graphics, short-form ads, social videos, and commercial campaign content.</p><div class="award">🏆 Employee of the Week — Jul 2023</div></div></article><article class="role"><div class="date">May 2023 — Jun 2023</div><div><h3>Video Editor / Motion Graphics Designer</h3><strong>Studio Belmont</strong><p>Commercial editing, animation, visual refinement, and post-production workflows.</p></div></article><article class="role"><div class="date">Feb 2021 — May 2023</div><div><h3>Project Manager</h3><strong>Palmenburg</strong><p>Remote technical and creative project coordination for international clients.</p></div></article><article class="role"><div class="date">Aug 2020 — Jun 2021</div><div><h3>Information Technology Support Engineer</h3><strong>DMarketinglines</strong><p>IT support, troubleshooting, systems coordination, and workflow continuity.</p></div></article><article class="role"><div class="date">Jan 2020 — Feb 2021</div><div><h3>Graphics Designer & Motion Graphics Designer</h3><strong>DMarketinglines</strong><p>Graphic design, motion graphics, digital ads, and campaign visuals.</p><div class="award">🏆 Employee of the Month — May 2020</div></div></article><article class="role"><div class="date">Jan 2017 — Present</div><div><h3>Freelance Motion Graphic Designer / Video Editor</h3><strong>Upwork / H.M Media Production</strong><p>500+ projects across motion, editing, animation, corporate videos, and presentations.</p><div class="award">🏆 Upwork Top Rated Freelancer</div></div></article></div></div></section>
-<section id="portfolio"><div class="container"><div class="head"><div><div class="eyebrow" data-en="Selected Work" data-ar="أعمال مختارة">Selected Work</div><h2 class="title" data-en="Portfolio by category." data-ar="الأعمال حسب المجال.">Portfolio by category.</h2></div></div><a class="btn primary" href="portfolio.html" data-en="Full Portfolio" data-ar="معرض الأعمال الكامل">Full Portfolio</a><!-- HM_FULL_PORTFOLIO_BUTTON --><div class="chips" id="chips"></div><div id="portfolioWrap"></div></div></section>
+<section class="surface" id="experience"><div class="container"><div class="head"><div><div class="eyebrow" data-en="Experience" data-ar="الخبرات">Experience</div><h2 class="title" data-en="Professional Experience" data-ar="الخبرات العملية">Professional Experience</h2></div></div><div class="timeline"><article class="role"><div class="date">May 2024 — Present</div><div><h3>Marketing Operations Executive / Multimedia Lead</h3><strong class="companyBadge">Baynunah Official — Ma Hawa</strong><p>Visual content, campaigns, product visuals, AI concepts, presentations, and event materials.</p><div class="award">🏆 Employee of the Year — Dec 2024</div></div></article><article class="role"><div class="date">Jun 2023 — May 2024</div><div><h3>Senior Video Editor & Motion Designer</h3><strong class="companyBadge">Super Future Technology</strong><p>Motion graphics, short-form ads, social videos, and commercial campaign content.</p><div class="award">🏆 Employee of the Week — Jul 2023</div></div></article><article class="role"><div class="date">May 2023 — Jun 2023</div><div><h3>Video Editor / Motion Graphics Designer</h3><strong class="companyBadge">Studio Belmont</strong><p>Commercial editing, animation, visual refinement, and post-production workflows.</p></div></article><article class="role"><div class="date">Feb 2021 — May 2023</div><div><h3>Project Manager</h3><strong class="companyBadge">Palmenburg</strong><p>Remote technical and creative project coordination for international clients.</p></div></article><article class="role"><div class="date">Aug 2020 — Jun 2021</div><div><h3>Information Technology Support Engineer</h3><strong class="companyBadge">DMarketinglines</strong><p>IT support, troubleshooting, systems coordination, and workflow continuity.</p></div></article><article class="role"><div class="date">Jan 2020 — Feb 2021</div><div><h3>Graphics Designer & Motion Graphics Designer</h3><strong class="companyBadge">DMarketinglines</strong><p>Graphic design, motion graphics, digital ads, and campaign visuals.</p><div class="award">🏆 Employee of the Month — May 2020</div></div></article><article class="role"><div class="date">Jan 2017 — Present</div><div><h3>Freelance Motion Graphic Designer / Video Editor</h3><strong class="companyBadge">Upwork / H.M Media Production</strong><p>500+ projects across motion, editing, animation, corporate videos, and presentations.</p><div class="award">🏆 Upwork Top Rated Freelancer</div></div></article></div></div></section>
+<section id="portfolio">
+  <div class="container">
+    <div class="head">
+      <div>
+        <div class="eyebrow" data-en="Selected Work" data-ar="أعمال مختارة">Selected Work</div>
+        <h2 class="title" data-en="Portfolio preview." data-ar="لمحة من الأعمال.">Portfolio preview.</h2>
+        <p class="intro" data-en="A clean preview of the main creative areas. Open the full portfolio to browse every project." data-ar="لمحة مختصرة عن مجالات العمل. افتح معرض الأعمال الكامل لتصفح كل المشاريع.">A clean preview of the main creative areas. Open the full portfolio to browse every project.</p>
+      </div>
+      <a class="btn primary backHomeLarge" href="portfolio.html" data-en="Full Portfolio" data-ar="معرض الأعمال الكامل">Full Portfolio</a>
+    </div>
+
+    <div class="previewPortfolioGrid">
+      <a class="previewCard" href="portfolio.html#motion-design">
+        <div><span class="previewIndex">01</span><h3>Motion Design</h3><p>Motion graphics, logo animation, explainers, and animated brand visuals.</p></div><span>Explore category</span>
+      </a>
+      <a class="previewCard" href="portfolio.html#ai-video">
+        <div><span class="previewIndex">02</span><h3>AI Video</h3><p>AI-generated videos, cinematic product scenes, and creative visual experiments.</p></div><span>Explore category</span>
+      </a>
+      <a class="previewCard" href="portfolio.html#video-production">
+        <div><span class="previewIndex">03</span><h3>Video Production</h3><p>Event coverage, videography, editing, reels, ads, interviews, and highlights.</p></div><span>Explore category</span>
+      </a>
+      <a class="previewCard" href="portfolio.html#web-commerce">
+        <div><span class="previewIndex">04</span><h3>Websites</h3><p>Portfolio websites, landing pages, Shopify/Wix stores, and campaign pages.</p></div><span>Explore category</span>
+      </a>
+      <a class="previewCard" href="portfolio.html#social-design">
+        <div><span class="previewIndex">05</span><h3>Social Design</h3><p>Static social designs, paid ads, carousels, launch posts, and campaigns.</p></div><span>Explore category</span>
+      </a>
+      <a class="previewCard" href="portfolio.html#print-branding">
+        <div><span class="previewIndex">06</span><h3>Print Branding</h3><p>Printing, packaging, event stands, car branding, and outdoor materials.</p></div><span>Explore category</span>
+      </a>
+      <a class="previewCard" href="portfolio.html#media-buying">
+        <div><span class="previewIndex">07</span><h3>Media Buying</h3><p>Meta/TikTok ads, campaign testing, audience targeting, and optimization.</p></div><span>Explore category</span>
+      </a>
+    </div>
+
+    <div class="previewPortfolioCta">
+      <a class="btn primary backHomeLarge" href="portfolio.html" data-en="View Full Portfolio" data-ar="عرض معرض الأعمال الكامل">View Full Portfolio</a>
+    </div>
+  </div>
+</section>
 <section class="surface" id="services"><div class="container"><div class="head"><div><div class="eyebrow" data-en="Services" data-ar="الخدمات">Services</div><h2 class="title" data-en="Things I can do for you." data-ar="شغلات فيني أعملها لك.">Things I can do for you.</h2></div></div><div class="grid3"><article class="card service"><div><div class="serviceTop"><h3>Motion & Video</h3><div class="icon">🎬</div></div><p>Ads, reels, explainers, event edits, and motion graphics.</p></div><a class="btn primary" target="_blank" href="https://wa.me/971542882950?text=Hello%20Hussein%2C%20I%20would%20like%20to%20request%3A%20Motion%20%26%20Video.%20Project%20details%3A">Request on WhatsApp</a></article><article class="card service"><div><div class="serviceTop"><h3>AI Visual Content</h3><div class="icon">✦</div></div><p>AI videos, product visuals, prompts, and storyboards.</p></div><a class="btn primary" target="_blank" href="https://wa.me/971542882950?text=Hello%20Hussein%2C%20I%20would%20like%20to%20request%3A%20AI%20Visual%20Content.%20Project%20details%3A">Request on WhatsApp</a></article><article class="card service"><div><div class="serviceTop"><h3>Social & Brand Design</h3><div class="icon">▣</div></div><p>Posts, paid ads, launch visuals, brochures, and logo animation.</p></div><a class="btn primary" target="_blank" href="https://wa.me/971542882950?text=Hello%20Hussein%2C%20I%20would%20like%20to%20request%3A%20Social%20%26%20Brand%20Design.%20Project%20details%3A">Request on WhatsApp</a></article><article class="card service"><div><div class="serviceTop"><h3>Web & E-Commerce</h3><div class="icon">⌘</div></div><p>Landing pages, portfolio sites, Shopify, Wix, and campaign pages.</p></div><a class="btn primary" target="_blank" href="https://wa.me/971542882950?text=Hello%20Hussein%2C%20I%20would%20like%20to%20request%3A%20Web%20%26%20E-Commerce.%20Project%20details%3A">Request on WhatsApp</a></article><article class="card service"><div><div class="serviceTop"><h3>AI Assistants</h3><div class="icon">◎</div></div><p>Chat assistants, voice agents, lead capture, and support flows.</p></div><a class="btn primary" target="_blank" href="https://wa.me/971542882950?text=Hello%20Hussein%2C%20I%20would%20like%20to%20request%3A%20AI%20Assistants.%20Project%20details%3A">Request on WhatsApp</a></article><article class="card service"><div><div class="serviceTop"><h3>Automation Systems</h3><div class="icon">⚙</div></div><p>Content workflows, approvals, publishing, notifications, and dashboards.</p></div><a class="btn primary" target="_blank" href="https://wa.me/971542882950?text=Hello%20Hussein%2C%20I%20would%20like%20to%20request%3A%20Automation%20Systems.%20Project%20details%3A">Request on WhatsApp</a></article></div></div></section>
 <section id="contact"><div class="container"><div class="contactBox"><div><div class="eyebrow" data-en="Contact" data-ar="التواصل">Contact</div><h2 class="title" data-en="Available across the UAE and remotely." data-ar="متاح في كل الإمارات وريموتلي.">Available across the UAE and remotely.</h2><p class="intro" data-en="For roles, freelance work, or individual service requests." data-ar="للوظائف، الفريلانس، أو طلب خدمة منفردة.">For roles, freelance work, or individual service requests.</p><div class="actions"><a class="btn primary" href="mailto:hussein.mlhem@gmail.com">Email</a><a class="btn outline" href="#services">Request a Service</a><a class="btn outline" href="https://wa.me/971542882950" target="_blank">WhatsApp</a><a class="btn outline" href="https://raw.githubusercontent.com/husseinmlhem/H2/main/assets/HusseinMlhemCV.pdf" target="_blank">Download CV</a></div></div><div class="contactList"><a class="contactItem" href="mailto:hussein.mlhem@gmail.com"><small>Email</small><span>hussein.mlhem@gmail.com</span></a><a class="contactItem" href="tel:+971542882950"><small>Phone</small><span>+971 54 2882 950</span></a><a class="contactItem" href="https://www.linkedin.com/in/hussein-mlhem/" target="_blank"><small>LinkedIn</small><span>linkedin.com/in/hussein-mlhem</span></a><a class="contactItem" href="https://youtube.com/playlist?list=PLqqrYKCZFlioU3ZsRjw3uf1_qfNR9sRE5" target="_blank"><small>Video Portfolio</small><span>YouTube Playlist</span></a></div></div></div></section>
 </main><footer><div class="container foot"><div>© Hussein Mlhem. Senior Multimedia Designer.</div><div><a href="#portfolio">Portfolio</a> · <a href="#services">Services</a> · <a href="#contact">Contact</a></div></div></footer><div class="floatActions">
@@ -45,25 +1116,230 @@ html[dir=rtl] .chip{text-align:right}html[dir=rtl] .timeline{padding-left:0;padd
 <script>
 (function(){
 'use strict';
-var SOURCES={motion:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/Motion.txt'},ai:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/ai.txt'},event:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/event.txt'},web:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/web.txt'},sm:{type:'folder',url:'https://api.github.com/repos/husseinmlhem/cv/contents/assets/SM?ref=main'},prints:{type:'folder',url:'https://api.github.com/repos/husseinmlhem/cv/contents/assets/Prints?ref=main'}};
-var categories=[{id:'motion-design',source:'motion',en:'Motion Design',ar:'موشن ديزاين',descEn:'Motion graphics, logo animation, explainers, brand reveals, and animated campaign visuals.',descAr:'موشن غرافيكس، لوغو أنيميشن، إكسبلينر، كشف شعارات، ومرئيات حملات متحركة.'},{id:'ai-video',source:'ai',en:'AI Video',ar:'فيديو AI',descEn:'AI-generated videos, AI-assisted editing, product scenes, cinematic ads, and creative visual experiments.',descAr:'فيديوهات مولدة بالذكاء الصناعي، مونتاج AI، مشاهد منتجات، إعلانات سينمائية، وتجارب بصرية.'},{id:'video-production',source:'event',en:'Video Production',ar:'إنتاج فيديو',descEn:'Video editing, videography, event coverage, reels, ads, interviews, and highlight cuts.',descAr:'مونتاج، تصوير، تغطية إيفنتات، ريلز، إعلانات، مقابلات، وهايلايت.'},{id:'web-commerce',source:'web',en:'Web Commerce',ar:'ويب ومتاجر',descEn:'Websites, landing pages, Shopify, Wix, product pages, and e-commerce campaign pages.',descAr:'مواقع، صفحات هبوط، Shopify، Wix، صفحات منتجات، وصفحات حملات للمتاجر.'},{id:'social-design',source:'sm',en:'Social Design',ar:'تصميم سوشال',descEn:'Static social media designs, paid-ad creatives, carousels, launch posts, and campaign visuals.',descAr:'تصاميم سوشال ثابتة، إعلانات مدفوعة، كاروسيل، بوستات إطلاق، ومرئيات حملات.'},{id:'print-branding',source:'prints',en:'Print Branding',ar:'طباعة وهوية',descEn:'Printing, packaging, event stands, car branding, product displays, outdoor materials, and retail visuals.',descAr:'طباعة، تغليف، ستاندات فعاليات، براندينغ سيارات، عروض منتجات، ومواد خارجية.'},{id:'media-buying',source:null,en:'Media Buying',ar:'شراء إعلاني',descEn:'Meta and TikTok ads, digital campaigns, audience targeting, content testing, and performance optimization.',descAr:'إعلانات Meta وTikTok، حملات رقمية، استهداف جماهير، اختبار محتوى، وتحسين الأداء.'}];
+
+var SOURCES={
+  motion:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/Motion.txt'},
+  ai:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/ai.txt'},
+  event:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/event.txt'},
+  web:{type:'txt',url:'https://raw.githubusercontent.com/husseinmlhem/cv/main/assets/web.txt'},
+  sm:{type:'folder',url:'https://api.github.com/repos/husseinmlhem/cv/contents/assets/SM?ref=main'},
+  prints:{type:'folder',url:'https://api.github.com/repos/husseinmlhem/cv/contents/assets/Prints?ref=main'}
+};
+
+var categories=[
+  {id:'motion-design',source:'motion',en:'Motion Design',ar:'موشن ديزاين',descEn:'Motion graphics, logo animation, explainers, brand reveals, and animated campaign visuals.',descAr:'موشن غرافيكس، لوغو أنيميشن، إكسبلينر، كشف شعارات، ومرئيات حملات متحركة.'},
+  {id:'ai-video',source:'ai',en:'AI Video',ar:'فيديو AI',descEn:'AI-generated videos, AI-assisted editing, product scenes, cinematic ads, and creative visual experiments.',descAr:'فيديوهات مولدة بالذكاء الصناعي، مونتاج AI، مشاهد منتجات، إعلانات سينمائية، وتجارب بصرية.'},
+  {id:'video-production',source:'event',en:'Video Production',ar:'إنتاج فيديو',descEn:'Video editing, videography, event coverage, reels, ads, interviews, and highlight cuts.',descAr:'مونتاج، تصوير، تغطية إيفنتات، ريلز، إعلانات، مقابلات، وهايلايت.'},
+  {id:'web-commerce',source:'web',en:'Websites',ar:'مواقع',descEn:'Websites, portfolio pages, landing pages, Shopify/Wix stores, and campaign pages.',descAr:'مواقع ويب، بورتفوليو، صفحات هبوط، متاجر Shopify/Wix، وصفحات حملات.'},
+  {id:'social-design',source:'sm',en:'Social Design',ar:'تصميم سوشال',descEn:'Static social media designs, paid-ad creatives, carousels, launch posts, and campaign visuals.',descAr:'تصاميم سوشال ثابتة، إعلانات مدفوعة، كاروسيل، بوستات إطلاق، ومرئيات حملات.'},
+  {id:'print-branding',source:'prints',en:'Print Branding',ar:'طباعة وهوية',descEn:'Printing, packaging, event stands, car branding, product displays, outdoor materials, and retail visuals.',descAr:'طباعة، تغليف، ستاندات فعاليات، براندينغ سيارات، عروض منتجات، ومواد خارجية.'},
+  {id:'media-buying',source:null,en:'Media Buying',ar:'شراء إعلاني',descEn:'Meta and TikTok ads, digital campaigns, audience targeting, content testing, and performance optimization.',descAr:'إعلانات Meta وTikTok، حملات رقمية، استهداف جماهير، اختبار محتوى، وتحسين الأداء.'}
+];
+
 var portfolioData={};
-function qs(s){return document.querySelector(s)}function qsa(s){return Array.prototype.slice.call(document.querySelectorAll(s))}function txt(v){return String(v==null?'':v)}function ar(){return document.documentElement.lang==='ar'}function isHttp(v){v=txt(v).toLowerCase();return v.indexOf('http://')===0||v.indexOf('https://')===0}
+
+function qs(s){return document.querySelector(s)}
+function qsa(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
+function txt(v){return String(v==null?'':v)}
+function ar(){return document.documentElement.lang==='ar'}
+function isHttp(v){v=txt(v).toLowerCase();return v.indexOf('http://')===0||v.indexOf('https://')===0}
 function parseLinks(t){return txt(t).replaceAll(String.fromCharCode(13),String.fromCharCode(10)).split(String.fromCharCode(10)).map(function(x){return x.trim()}).filter(isHttp)}
-function youtubeId(u){try{var p=new URL(u),h=p.hostname.replace('www.','').toLowerCase();if(h==='youtu.be')return p.pathname.split('/').filter(Boolean)[0]||'';if(h==='youtube.com'||h==='m.youtube.com'){if(p.pathname.indexOf('/shorts/')===0)return p.pathname.split('/').filter(Boolean)[1]||'';return p.searchParams.get('v')||''}return ''}catch(e){return ''}}
-function host(u){try{return new URL(u).hostname.replace('www.','')}catch(e){return u}}function titleFromName(n,i){n=txt(n)||('Item '+(i+1));var d=n.lastIndexOf('.');if(d>0)n=n.slice(0,d);return n.split('-').join(' ').split('_').join(' ')}
-function imgFor(item,c,i){if(item.kind==='image')return item.url;var id=youtubeId(item.url);return id?'https://img.youtube.com/vi/'+id+'/hqdefault.jpg':'https://picsum.photos/seed/'+encodeURIComponent(c+'-'+i)+'/900/700'}
-function loadTxt(u){if(!u)return Promise.resolve([]);return fetch(u,{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){return parseLinks(t).map(function(l){return{kind:'link',url:l,title:''}})}).catch(function(){return []})}
+
+function youtubeId(u){
+  try{
+    var p=new URL(u),h=p.hostname.replace('www.','').toLowerCase();
+    if(h==='youtu.be')return p.pathname.split('/').filter(Boolean)[0]||'';
+    if(h==='youtube.com'||h==='m.youtube.com'){
+      if(p.pathname.indexOf('/shorts/')===0)return p.pathname.split('/').filter(Boolean)[1]||'';
+      return p.searchParams.get('v')||'';
+    }
+    return '';
+  }catch(e){return ''}
+}
+
+function host(u){try{return new URL(u).hostname.replace('www.','')}catch(e){return u}}
+
+function siteTitle(u){
+  try{
+    var p=new URL(u);
+    var h=p.hostname.replace(/^www\./,'');
+    var path=p.pathname.replace(/\/$/,'').split('/').filter(Boolean).join(' / ');
+    var known={
+      'shop.mahawa.ae':'Ma Hawa Shop',
+      'mahawa.ae':'Ma Hawa Website',
+      'baynunah.de':'Baynunah Website',
+      'husseinmlhem.com':'Hussein Mlhem Portfolio'
+    };
+    if(known[h])return known[h];
+    if(path)return h+' / '+path;
+    return h;
+  }catch(e){return 'Website'}
+}
+
+function titleFromName(n,i,prefix){return (prefix||'Image')+' — '+String(i+1).padStart(2,'0')}
+
+function imgFor(item,c,i){
+  if(item.kind==='image')return item.url;
+  var id=youtubeId(item.url);
+  return id?'https://img.youtube.com/vi/'+id+'/hqdefault.jpg':'https://picsum.photos/seed/'+encodeURIComponent(c+'-'+i)+'/900/700'
+}
+
+function loadTxt(u){
+  if(!u)return Promise.resolve([]);
+  return fetch(u,{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){
+    return parseLinks(t).map(function(l){return{kind:'link',url:l,title:''}})
+  }).catch(function(){return []})
+}
+
 function isImage(n){n=txt(n).toLowerCase();return n.endsWith('.webp')||n.endsWith('.png')||n.endsWith('.jpg')||n.endsWith('.jpeg')||n.endsWith('.gif')}
-function loadFolder(u){if(!u)return Promise.resolve([]);return fetch(u,{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(items){if(!Array.isArray(items))return[];return items.filter(function(x){return x&&x.type==='file'&&x.download_url&&isImage(x.name)}).map(function(x,i){return{kind:'image',url:x.download_url,title:titleFromName(x.name,i)}})}).catch(function(){return []})}
-function loadSource(k){if(!k||!SOURCES[k])return Promise.resolve([]);var s=SOURCES[k];return s.type==='folder'?loadFolder(s.url):loadTxt(s.url)}
+
+function loadFolder(u){
+  if(!u)return Promise.resolve([]);
+  return fetch(u,{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(items){
+    if(!Array.isArray(items))return[];
+    return items.filter(function(x){return x&&x.type==='file'&&x.download_url&&isImage(x.name)}).map(function(x,i){
+      return{kind:'image',url:x.download_url,title:''}
+    })
+  }).catch(function(){return []})
+}
+
+function loadSource(k){
+  if(!k||!SOURCES[k])return Promise.resolve([]);
+  var s=SOURCES[k];
+  return s.type==='folder'?loadFolder(s.url):loadTxt(s.url)
+}
+
 function loadAll(){return Promise.all(categories.map(function(c){return loadSource(c.source).then(function(items){portfolioData[c.id]=items})}))}
-function applyLang(l){document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';qsa('[data-en]').forEach(function(e){e.textContent=e.getAttribute(l==='ar'?'data-ar':'data-en')||e.textContent});qsa('.lang button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-lang')===l)});renderPortfolio()}
-function renderPortfolio(){var chips=qs('#chips'),wrap=qs('#portfolioWrap');if(!chips||!wrap)return;var rtl=ar();chips.innerHTML='<button class="chip active" data-filter="all" type="button"><span class="chipTitle">'+(rtl?'كل الأعمال':'All Work')+'</span><span class="chipDesc">'+(rtl?'عرض جميع فئات الأعمال المختارة في مكان واحد.':'Show all selected portfolio categories in one view.')+'</span></button>'+categories.map(function(c){return'<button class="chip" data-filter="'+c.id+'" type="button"><span class="chipTitle">'+(rtl?c.ar:c.en)+'</span><span class="chipDesc">'+(rtl?c.descAr:c.descEn)+'</span></button>'}).join('');
-wrap.innerHTML=categories.map(function(c){var title=rtl?c.ar:c.en,desc=rtl?c.descAr:c.descEn,items=portfolioData[c.id]||[],cards='';if(items.length){cards=items.map(function(item,i){var video=Boolean(youtubeId(item.url)),label=item.kind==='image'?(rtl?'عرض الصورة':'View Image'):(video?(rtl?'مشاهدة الفيديو':'Watch Video'):(rtl?'فتح الرابط':'Open Link')),tt=item.title||(title+' — '+String(i+1).padStart(2,'0'));return'<a class="work '+(i>2?'hidden':'')+'" href="'+item.url+'" target="_blank" rel="noopener"><img src="'+imgFor(item,c.id,i)+'" alt="'+tt+'"><div class="workText"><small>'+title+'</small><h3>'+tt+'</h3><p>'+host(item.url)+' · '+label+'</p></div></a>'}).join('')}else{cards='<article class="work"><img src="https://picsum.photos/seed/'+c.id+'-empty/900/700" alt="'+title+'"><div class="workText"><small>'+title+'</small><h3>'+(rtl?'سيتم الإضافة قريباً':'Coming Soon')+'</h3><p>'+(rtl?'أضف الروابط أو الصور داخل المسار المناسب في GitHub.':'Add links or images to the related GitHub path.')+'</p></div></article>'}var btn=items.length>3?'<button class="showMore" type="button">'+(rtl?'عرض الكل':'View All')+'</button>':'';return'<section class="portfolioCat" data-cat="'+c.id+'"><div class="head"><div><h3>'+title+'</h3><p class="intro">'+desc+'</p></div></div><div class="portfolioGrid">'+cards+'</div>'+btn+'</section>'}).join('');
-qsa('.chip').forEach(function(b){b.onclick=function(){qsa('.chip').forEach(function(x){x.classList.remove('active')});b.classList.add('active');var f=b.getAttribute('data-filter');qsa('.portfolioCat').forEach(function(s){s.style.display=(f==='all'||s.getAttribute('data-cat')===f)?'':'none'})}});qsa('.showMore').forEach(function(b){b.onclick=function(){var sec=b.closest('.portfolioCat'),hidden=sec.querySelectorAll('.work.hidden').length>0;Array.prototype.slice.call(sec.querySelectorAll('.work')).forEach(function(w,i){w.classList.toggle('hidden',!hidden&&i>2)});b.textContent=hidden?(rtl?'إخفاء':'Show Less'):(rtl?'عرض الكل':'View All')}})}
-function tests(){console.assert(parseLinks('https://a.com\ntext\r\nhttps://b.com').length===2,'parseLinks failed');console.assert(youtubeId('https://youtu.be/abc123?si=x')==='abc123','youtube failed');console.assert(isImage('sample.webp')===true,'webp failed');console.log('Portfolio self-tests passed')}
-document.addEventListener('DOMContentLoaded',function(){qsa('.lang button').forEach(function(b){b.onclick=function(){applyLang(b.getAttribute('data-lang'))}});applyLang('en');tests();loadAll().then(renderPortfolio)})
+
+function applyLang(l){
+  document.documentElement.lang=l;
+  document.documentElement.dir=l==='ar'?'rtl':'ltr';
+  qsa('[data-en]').forEach(function(e){e.textContent=e.getAttribute(l==='ar'?'data-ar':'data-en')||e.textContent});
+  qsa('.lang button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-lang')===l)});
+  renderPortfolio()
+}
+
+function renderPortfolio(){
+  var chips=qs('#chips'),wrap=qs('#portfolioWrap');
+  if(!chips||!wrap)return;
+  var rtl=ar();
+  var fullPage=document.body.classList.contains('portfolio-page') || Boolean(qs('.portfolioHero'));
+
+  chips.innerHTML='<button class="chip active" data-filter="all" type="button"><span class="chipTitle">'+(rtl?'كل الأعمال':'All Work')+'</span><span class="chipDesc">'+(rtl?'عرض جميع فئات الأعمال المختارة في مكان واحد.':'Show all selected portfolio categories in one view.')+'</span></button>'+categories.map(function(c){
+    return'<button class="chip" data-filter="'+c.id+'" type="button"><span class="chipTitle">'+(rtl?c.ar:c.en)+'</span><span class="chipDesc">'+(rtl?c.descAr:c.descEn)+'</span></button>'
+  }).join('');
+
+  wrap.innerHTML=categories.map(function(c){
+    var title=rtl?c.ar:c.en,desc=rtl?c.descAr:c.descEn,items=portfolioData[c.id]||[],cards='';
+    if(items.length){
+      cards=items.map(function(item,i){
+        var isWeb=c.id==='web-commerce';
+        var video=Boolean(youtubeId(item.url));
+        var label=isWeb?(rtl?'زيارة الموقع':'Visit Website'):(item.kind==='image'?(rtl?'عرض الصورة':'View Image'):(video?(rtl?'مشاهدة الفيديو':'Watch Video'):(rtl?'فتح الرابط':'Open Link')));
+        var tt=isWeb?siteTitle(item.url):(item.title||titleFromName('',i,title));
+        var cls='work '+(isWeb?'websiteCard ':'')+((!fullPage && i>2)?'hidden':'');
+        var image=isWeb?'':'<img src="'+imgFor(item,c.id,i)+'" alt="'+tt+'">';
+        var pill=isWeb?'<span class="visitPill">'+(rtl?'زيارة':'Visit')+'</span>':'';
+        var small=isWeb?(rtl?'موقع':'Website'):title;
+        return'<a class="'+cls+'" href="'+item.url+'" target="_blank" rel="noopener">'+image+'<div class="workText"><small>'+small+'</small><h3>'+tt+'</h3><p>'+host(item.url)+' · '+label+'</p>'+pill+'</div></a>'
+      }).join('')
+    }else{
+      cards='<article class="work"><img src="https://picsum.photos/seed/'+c.id+'-empty/900/700" alt="'+title+'"><div class="workText"><small>'+title+'</small><h3>'+(rtl?'سيتم الإضافة قريباً':'Coming Soon')+'</h3><p>'+(rtl?'أضف الروابط أو الصور داخل المسار المناسب في GitHub.':'Add links or images to the related GitHub path.')+'</p></div></article>'
+    }
+    var btn=(!fullPage && items.length>3)?'<button class="showMore" type="button">'+(rtl?'عرض الكل':'View All')+'</button>':'';
+    return'<section class="portfolioCat" data-cat="'+c.id+'"><div class="head"><div><h3 class="portfolioCatTitle">'+title+'</h3><p class="intro">'+desc+'</p></div></div><div class="portfolioGrid">'+cards+'</div>'+btn+'</section>'
+  }).join('');
+
+  qsa('.chip').forEach(function(b){
+    b.onclick=function(){
+      qsa('.chip').forEach(function(x){x.classList.remove('active')});
+      b.classList.add('active');
+      var f=b.getAttribute('data-filter');
+      qsa('.portfolioCat').forEach(function(s){s.style.display=(f==='all'||s.getAttribute('data-cat')===f)?'':'none'});
+      setTimeout(function(){
+        var target=qs('#portfolioWrap');
+        if(target){
+          var y=target.getBoundingClientRect().top+window.pageYOffset-105;
+          window.scrollTo({top:y,behavior:'smooth'})
+        }
+      },80)
+    }
+  });
+
+  qsa('.showMore').forEach(function(b){
+    b.onclick=function(){
+      var sec=b.closest('.portfolioCat'),hidden=sec.querySelectorAll('.work.hidden').length>0;
+      Array.prototype.slice.call(sec.querySelectorAll('.work')).forEach(function(w,i){w.classList.toggle('hidden',!hidden&&i>2)});
+      b.textContent=hidden?(rtl?'إخفاء':'Show Less'):(rtl?'عرض الكل':'View All')
+    }
+  })
+}
+
+function updateScrollIndicators(){
+  var max=document.documentElement.scrollHeight-window.innerHeight;
+  var pct=max>0?(window.pageYOffset/max)*100:0;
+  var bar=qs('#scrollProgress');
+  var rail=qs('#scrollRail');
+  if(bar)bar.style.setProperty('--progress',pct+'%');
+  if(rail)rail.style.setProperty('--scroll',pct+'%');
+
+  var current='';
+  qsa('section[id]').forEach(function(sec){
+    if(sec.getBoundingClientRect().top<=150)current=sec.id;
+  });
+  qsa('.links a').forEach(function(a){
+    var href=a.getAttribute('href')||'';
+    a.classList.toggle('active',href==='#'+current||href.endsWith('#'+current)||(current==='portfolio'&&href.indexOf('portfolio')>-1));
+  });
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  qsa('.lang button').forEach(function(b){b.onclick=function(){applyLang(b.getAttribute('data-lang'))}});
+  applyLang('en');
+  loadAll().then(function(){
+    renderPortfolio();
+    if(location.hash){
+      setTimeout(function(){
+        var key=location.hash.replace('#','');
+        var btn=document.querySelector('.chip[data-filter="'+key+'"]');
+        if(btn)btn.click();
+      },400)
+    }
+  });
+  updateScrollIndicators();
+  window.addEventListener('scroll',updateScrollIndicators,{passive:true});
+  window.addEventListener('resize',updateScrollIndicators);
+})
 })();
 </script>
+<script>
+(function(){
+  function revealCards(){
+    var cards=[].slice.call(document.querySelectorAll('.revealCard,.card,.role,.previewCard,.work,.eduCertCard,.snapshot,.eduPanel,.eduLargeItem'));
+    if(!('IntersectionObserver' in window)){
+      cards.forEach(function(c){c.classList.add('isVisible')});
+      return;
+    }
+    if(window.__hmRevealObserver){window.__hmRevealObserver.disconnect()}
+    window.__hmRevealObserver=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){entry.target.classList.add('isVisible')}
+        else{entry.target.classList.remove('isVisible')}
+      });
+    },{threshold:.10,rootMargin:'0px 0px -6% 0px'});
+    cards.forEach(function(c){window.__hmRevealObserver.observe(c)});
+  }
+  document.addEventListener('DOMContentLoaded',revealCards);
+  window.addEventListener('load',revealCards);
+  setTimeout(revealCards,900);
+})();
+</script>
+<div class="floatingActions" aria-label="Quick contact buttons">
+  <a class="floatBtn" href="https://wa.me/971542882950" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.42c-.27-.14-1.58-.78-1.82-.87-.24-.09-.42-.14-.6.14-.18.27-.69.87-.85 1.05-.16.18-.31.2-.58.07-.27-.14-1.13-.42-2.16-1.35-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.42.12-.56.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.05-.34-.02-.47-.07-.14-.6-1.45-.82-1.98-.22-.53-.44-.46-.6-.47h-.51c-.18 0-.47.07-.72.34-.25.27-.94.92-.94 2.24s.96 2.6 1.09 2.78c.14.18 1.89 2.89 4.58 4.05.64.28 1.14.45 1.53.57.64.2 1.23.17 1.69.1.52-.08 1.58-.65 1.81-1.28.22-.63.22-1.17.16-1.28-.07-.11-.24-.18-.51-.31zM16.01 4.5c-6.34 0-11.47 5.14-11.47 11.48 0 2.03.53 3.93 1.46 5.58L4.5 27.5l6.1-1.58a11.42 11.42 0 0 0 5.41 1.38h.01c6.33 0 11.48-5.14 11.48-11.48A11.48 11.48 0 0 0 16.01 4.5zm0 20.9h-.01c-1.72 0-3.41-.46-4.88-1.32l-.35-.2-3.62.94.97-3.53-.23-.36a9.53 9.53 0 0 1-1.47-5.12c0-5.27 4.29-9.56 9.57-9.56 2.55 0 4.95.99 6.75 2.8a9.5 9.5 0 0 1 2.8 6.76c0 5.27-4.3 9.56-9.57 9.56z"/></svg>
+  </a>
+  <a class="floatBtn" href="tel:+971542882950" aria-label="Call Hussein">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
 </body></html>
